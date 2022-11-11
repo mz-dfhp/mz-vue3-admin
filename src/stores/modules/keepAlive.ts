@@ -2,12 +2,12 @@ import { defineStore } from 'pinia'
 import store from '@/stores'
 
 interface IKeepList {
-  keepList: []
+  keepList: Array<string>
 }
 export const keepAliveStore = defineStore('keepAlive', {
   state(): IKeepList {
     return {
-      keepList: []
+      keepList: ['Keep-one-page', 'Keep-two-page', 'Keep-three-page']
     }
   },
   getters: {
@@ -16,8 +16,8 @@ export const keepAliveStore = defineStore('keepAlive', {
     }
   },
   actions: {
-    setkeepAlive(list: any) {
-      this.keepList = list
+    addkeepAlive(keepItem: string) {
+      this.keepList = [...this.keepList, keepItem]
     }
   }
 })

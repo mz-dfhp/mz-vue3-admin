@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia'
 import store from '@/stores'
+import { UserInfo } from '@/interface'
 
 interface IUser {
   token: string
-  userInfo: object
+  userInfo: UserInfo
 }
 export const userStore = defineStore('user', {
   state(): IUser {
@@ -25,6 +26,9 @@ export const userStore = defineStore('user', {
           resolve()
         }, 2000)
       })
+    },
+    setUserInfo(userInfo: UserInfo) {
+      this.userInfo = userInfo
     }
   }
 })

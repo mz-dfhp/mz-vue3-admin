@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
+import { cloneDeep } from 'lodash-es'
 import store from '@/stores'
-
+import { flatSystemRoutes } from '@/utils/route'
+import { RouteRecordRaw } from 'vue-router'
 interface IRoute {
-  routes: []
+  routes: Array<RouteRecordRaw>
 }
 export const routeStore = defineStore('route', {
   state(): IRoute {
@@ -12,12 +14,13 @@ export const routeStore = defineStore('route', {
   },
   getters: {
     getRoutes(state: IRoute) {
-      return state.routes
+      const copeRoutes = cloneDeep(state.routes)
+      return flatSystemRoutes(copeRoutes)
     }
   },
   actions: {
-    setRoutes(list: any) {
-      this.routes = list
+    setRoutes(result: RouteRecordRaw[]) {
+      this.routes = result
     }
   }
 })

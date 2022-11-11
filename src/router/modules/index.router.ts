@@ -12,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/index',
     children: [
       {
-        path: '/index',
+        path: 'index',
         name: `${routeName}-index`,
         component: () => import('@/views/index/index.vue'),
         meta: {

@@ -2,6 +2,9 @@
 import AppMenu from './AppMenu/index.vue'
 import AppLogo from './AppLogo/index.vue'
 import AppHeader from './AppHeader/index.vue'
+import { keepAliveStore } from '@/stores/modules/keepAlive'
+const keepAliveInstance = keepAliveStore()
+const keepList = keepAliveInstance.getkeepAlive
 </script>
 <template>
   <div class="common-layout">
@@ -15,7 +18,7 @@ import AppHeader from './AppHeader/index.vue'
         <el-main class="common-main">
           <router-view v-slot="{ Component, route }">
             <transition mode="out-in" appear>
-              <keep-alive :include="[]">
+              <keep-alive :include="keepList">
                 <component :is="Component" :key="route.fullPath" />
               </keep-alive>
             </transition>

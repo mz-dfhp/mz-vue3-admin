@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.2.0
   '@commitlint/config-conventional': ^17.2.0
+  '@types/lodash-es': ^4.17.6
   '@types/node': ^18.11.9
   '@types/nprogress': ^0.2.0
   '@typescript-eslint/eslint-plugin': ^5.42.0
@@ -15,6 +16,7 @@ specifiers:
   eslint-plugin-vue: ^9.7.0
   husky: ^8.0.2
   lint-staged: ^13.0.3
+  lodash-es: ^4.17.21
   normalize.css: ^8.0.1
   nprogress: ^0.2.0
   pinia: ^2.0.23
@@ -33,6 +35,7 @@ specifiers:
 dependencies:
   '@vitejs/plugin-vue-jsx': 2.1.1_vite@3.2.2+vue@3.2.41
   element-plus: 2.2.20_vue@3.2.41
+  lodash-es: 4.17.21
   normalize.css: 8.0.1
   nprogress: 0.2.0
   pinia: 2.0.23_l7r24p6nevbtlimqmqcwa3ouhu
@@ -42,6 +45,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.2.0
   '@commitlint/config-conventional': 17.2.0
+  '@types/lodash-es': 4.17.6
   '@types/node': 18.11.9
   '@types/nprogress': 0.2.0
   '@typescript-eslint/eslint-plugin': 5.42.0_ofgjrzjuekeo7s3hdyz2yuzw34
@@ -716,11 +720,9 @@ packages:
     resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
     dependencies:
       '@types/lodash': 4.14.188
-    dev: false
 
   /@types/lodash/4.14.188:
     resolution: {integrity: sha512-zmEmF5OIM3rb7SbLCFYoQhO4dGt2FRM9AMkxvA3LaADOF1n8in/zGJlWji9fmafLoNyz+FoL6FE0SLtGIArD7w==}
-    dev: false
 
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}

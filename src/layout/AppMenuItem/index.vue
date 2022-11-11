@@ -30,5 +30,4 @@ const menuItemClick = (e: any) => {
     name: e.index
   })
 }
-console.log(props)
 </script>

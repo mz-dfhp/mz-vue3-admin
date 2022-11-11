@@ -3,7 +3,7 @@ const layout = () => import('@/layout/index.vue')
 const routeName = 'Keep'
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/Keep',
+    path: '/keep',
     name: routeName,
     component: layout,
     meta: {
@@ -11,28 +11,49 @@ const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
-        path: 'Keep-one',
-        name: `${routeName}-one`,
-        component: () => import('@/views/keep/keep-one.vue'),
+        path: 'keep-one',
+        name: `${routeName}-one-page`,
+        component: () => import('@/views/keep/keep-one-page.vue'),
         meta: {
-          title: '缓存组件一'
+          title: '缓存组件一',
+          keepAlive: true
         }
       },
       {
-        path: 'Keep-two',
+        path: 'keep-two',
         name: `${routeName}-two`,
-        redirect: '',
         meta: {
           title: '缓存组件二'
         },
+        redirect: '',
         children: [
           {
-            path: 'Keep-two-demo',
-            name: `${routeName}-Keep-two-demo`,
-            component: () => import('@/views/keep/Keep-two-demo.vue'),
+            path: 'keep-two-page',
+            name: `${routeName}-two-page`,
+            component: () => import('@/views/keep/keep-two-page.vue'),
             meta: {
-              title: '多级缓存页面'
+              title: '二级缓存页面',
+              keepAlive: true
             }
+          },
+          {
+            path: 'keep-three',
+            name: `${routeName}-three`,
+            meta: {
+              title: '缓存组件三'
+            },
+            redirect: '',
+            children: [
+              {
+                path: 'keep-three-page',
+                name: `${routeName}-three-page`,
+                component: () => import('@/views/keep/keep-three-page.vue'),
+                meta: {
+                  title: '三级缓存页面',
+                  keepAlive: true
+                }
+              }
+            ]
           }
         ]
       }
