@@ -10,7 +10,9 @@ export const userStore = defineStore('user', {
   state(): IUser {
     return {
       token: '1212121',
-      userInfo: {}
+      userInfo: {
+        permission: []
+      }
     }
   },
   getters: {

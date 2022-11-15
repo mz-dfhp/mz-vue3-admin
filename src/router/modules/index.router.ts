@@ -7,7 +7,8 @@ const routes: Array<RouteRecordRaw> = [
     name: routeName,
     component: layout,
     meta: {
-      title: '首页'
+      title: '首页',
+      sort: 1
     },
     redirect: '/index',
     children: [

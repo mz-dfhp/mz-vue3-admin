@@ -7,7 +7,8 @@ const routes: Array<RouteRecordRaw> = [
     name: routeName,
     component: layout,
     meta: {
-      title: '组件'
+      title: '组件',
+      sort: 2
     },
     children: [
       {

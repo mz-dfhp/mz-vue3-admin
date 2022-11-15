@@ -3,24 +3,24 @@
     <template v-if="item.children">
       <el-sub-menu :index="item.name" :key="item.name">
         <template #title>
-          <span>{{ item.name }}</span>
+          <span>{{ item.title }}</span>
         </template>
         <AppMenuItem :menuList="item.children" />
       </el-sub-menu>
     </template>
     <template v-else>
       <el-menu-item :index="item.name" :key="item.name" @click="menuItemClick">
-        <span>{{ item.name }}</span>
+        <span>{{ item.title }}</span>
       </el-menu-item>
     </template>
   </template>
 </template>
 <script lang="ts" setup name="AppMenuItem">
-import { RouteRecordRaw } from 'vue-router'
+import { IPermissionList } from '@/interface'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 interface IProps {
-  menuList: Array<RouteRecordRaw>
+  menuList: Array<IPermissionList>
 }
 const props = withDefaults(defineProps<IProps>(), {
   menuList: () => []

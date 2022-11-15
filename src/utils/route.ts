@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash-es'
-import { Route } from '../types/router'
+import { Route } from '@/types/router'
 import { IPermissionList } from '@/interface'
 import { RouteRecordRaw } from 'vue-router'
 function flatRoutes(
@@ -9,13 +9,18 @@ function flatRoutes(
 ) {
   const result: RouteRecordRaw[] = []
   routes.forEach((element) => {
-    if (element.meta && element.meta.breadcrumb) {
+    if (element.meta) {
       element.meta.breadcrumb = [
         ...routeCrumbs,
-        { path: element.path, title: element?.meta?.title }
+        {
+          path: element.path,
+          name: element?.name,
+          title: element?.meta?.title,
+          hide: element?.meta?.hide
+        }
       ]
     }
-    element.path = `${url}/${element.path}`
+    element.path = `${url ? url + '/' : ''}${element.path}`
     if (element.children && element.children.length > 0) {
       const cope = cloneDeep(element.children)
       delete element.children
@@ -36,20 +41,29 @@ export function flatSystemRoutes(systemRoutes: RouteRecordRaw[]) {
   resultRoutes.forEach((route: RouteRecordRaw) => {
     if (route.children) {
       route.children.forEach((sonRoute) => {
+        const routeCrumbs = [
+          {
+            path: route.path,
+            name: route?.name,
+            title: route?.meta?.title,
+            hide: route?.meta?.hide
+          },
+          {
+            path: sonRoute.path,
+            name: sonRoute?.name,
+            title: sonRoute?.meta?.title,
+            hide: sonRoute?.meta?.hide
+          }
+        ]
+        if (sonRoute.meta) {
+          sonRoute.meta.breadcrumb = routeCrumbs
+        }
         if (sonRoute.children) {
-          sonRoute.children = flatRoutes(
-            sonRoute.children,
-            [
-              { path: route.path, title: route?.meta?.title },
-              { path: sonRoute.path, title: sonRoute?.meta?.title }
-            ],
-            ''
-          )
+          sonRoute.children = flatRoutes(sonRoute.children, routeCrumbs, '')
         }
       })
     }
   })
-  console.log(resultRoutes)
   return resultRoutes
 }
 
@@ -75,4 +89,8 @@ export function diffRouterList(
     })
   })
   return resultRoutes
+}
+
+export function sortList(list: IPermissionList[]) {
+  return list.slice(0).sort((a, b) => (a?.sort || 1) - (b?.sort || 0))
 }

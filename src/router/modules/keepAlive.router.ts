@@ -7,12 +7,13 @@ const routes: Array<RouteRecordRaw> = [
     name: routeName,
     component: layout,
     meta: {
-      title: '缓存Keep'
+      title: '缓存Keep',
+      sort: 3
     },
     children: [
       {
         path: 'keep-one',
-        name: `${routeName}-one-page`,
+        name: `${routeName}-one`,
         component: () => import('@/views/keep/keep-one-page.vue'),
         meta: {
           title: '缓存组件一',
@@ -52,6 +53,25 @@ const routes: Array<RouteRecordRaw> = [
                   title: '三级缓存页面',
                   keepAlive: true
                 }
+              },
+              {
+                path: 'keep-four',
+                name: `${routeName}-four`,
+                meta: {
+                  title: '缓存组件四'
+                },
+                redirect: '',
+                children: [
+                  {
+                    path: 'keep-four-page',
+                    name: `${routeName}-four-page`,
+                    component: () => import('@/views/keep/keep-four-page.vue'),
+                    meta: {
+                      title: '四级缓存页面',
+                      keepAlive: true
+                    }
+                  }
+                ]
               }
             ]
           }

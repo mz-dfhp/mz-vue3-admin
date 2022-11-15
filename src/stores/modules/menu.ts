@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
 import store from '@/stores'
+import { sortList } from '@/utils/route'
+import { IPermissionList } from '@/interface'
 
 interface IMenu {
-  menus: []
+  menus: IPermissionList[]
 }
 export const menuStore = defineStore('menu', {
   state(): IMenu {
@@ -16,8 +18,8 @@ export const menuStore = defineStore('menu', {
     }
   },
   actions: {
-    setMenus(list: any) {
-      this.menus = list
+    setMenus(list: IPermissionList[]) {
+      this.menus = sortList(list)
     }
   }
 })

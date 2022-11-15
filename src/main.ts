@@ -4,7 +4,11 @@ import 'normalize.css'
 import '@/styles/index.scss'
 import { setupStore } from '@/stores'
 import { setupRouter } from '@/router'
-import { setupElementPlus, setupGlobalProperties } from '@/plugins'
+import {
+  setupElementPlus,
+  setupGlobalProperties,
+  setupBaseComponents
+} from '@/plugins'
 const app = createApp(App)
 
 function setupApp() {
@@ -12,7 +16,7 @@ function setupApp() {
   setupRouter(app)
   setupElementPlus(app)
   setupGlobalProperties(app)
+  setupBaseComponents(app)
 }
 setupApp()
-
 app.mount('#app')

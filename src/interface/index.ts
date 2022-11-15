@@ -1,9 +1,8 @@
 export interface IPermissionList {
   name: string
   path: string
-  meta: {
-    title: string
-  }
+  title?: string
+  sort?: number
   children?: Array<IPermissionList>
 }
 

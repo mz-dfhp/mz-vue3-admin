@@ -2,27 +2,23 @@
 import AppMenu from './AppMenu/index.vue'
 import AppLogo from './AppLogo/index.vue'
 import AppHeader from './AppHeader/index.vue'
-import { keepAliveStore } from '@/stores/modules/keepAlive'
-const keepAliveInstance = keepAliveStore()
-const keepList = keepAliveInstance.getkeepAlive
+import AppMain from './AppMain/index.vue'
+import AppTabs from './AppTabs/index.vue'
+import { settingStore } from '@/stores/modules/setting'
+const settingStoreInstance = settingStore()
 </script>
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside width="200px" class="common-aside">
-        <AppLogo />
-        <AppMenu />
+      <el-aside width="auto" class="common-aside">
+        <AppLogo :expansion="settingStoreInstance.getExpansion" />
+        <AppMenu :expansion="settingStoreInstance.getExpansion" />
       </el-aside>
       <el-container>
         <el-header><AppHeader /></el-header>
+        <AppTabs />
         <el-main class="common-main">
-          <router-view v-slot="{ Component, route }">
-            <transition mode="out-in" appear>
-              <keep-alive :include="keepList">
-                <component :is="Component" :key="route.fullPath" />
-              </keep-alive>
-            </transition>
-          </router-view>
+          <AppMain />
         </el-main>
       </el-container>
     </el-container>
@@ -32,20 +28,10 @@ const keepList = keepAliveInstance.getkeepAlive
 .common-layout {
   min-height: 100%;
   .common-main {
-    background: #f5f5f5;
+    background: $color;
   }
   .common-aside {
     height: 100vh;
-    background-color: #001428;
   }
-}
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
 }
 </style>

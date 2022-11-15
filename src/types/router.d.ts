@@ -1,4 +1,4 @@
-import { RouteMeta, RouteRecordRaw } from 'vue-router'
+import { RouteMeta, RouteRecordName, RouteRecordRaw } from 'vue-router'
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -6,6 +6,8 @@ declare module 'vue-router' {
     keepAlive?: boolean
     activeMenu?: string
     title: string
+    hide?: boolean
+    sort?: number
   }
 }
 declare namespace Route {
@@ -22,6 +24,7 @@ declare namespace Route {
   interface breadcrumb {
     path?: string
     title?: string
-    hide?: boolean
+    hide?: boolean | undefined
+    name?: RouteRecordName | undefined
   }
 }

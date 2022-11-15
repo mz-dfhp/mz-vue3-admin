@@ -1,10 +1,10 @@
 <script setup lang="ts" name="AppLogo">
-// interface Props {
-//   collapsed: boolean
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   collapsed: true
-// })
+interface Props {
+  expansion: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
+  expansion: true
+})
 </script>
 
 <template>
@@ -15,7 +15,7 @@
       class="logo-img"
       src="../../assets/images/logo.jpg"
     />
-    <!-- <div class="logo-title" v-if="!props.collapsed">admin</div> -->
+    <div class="logo-title" v-if="!props.expansion">admin</div>
   </div>
 </template>
 
