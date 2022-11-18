@@ -1,3 +1,4 @@
+import { keepAliveStore } from './../stores/modules/keepAlive'
 import { routeStoreWithout } from '@/stores/modules/route'
 import { userStoreWithout } from '@/stores/modules/user'
 import { Router } from 'vue-router'
@@ -41,6 +42,11 @@ export function createRouterPermissions(router: Router) {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   router.afterEach((to, from, failure) => {
+    const keepAliveStoreInstance = keepAliveStore()
+    if (to.meta.keepAlive) {
+      console.log(to)
+      keepAliveStoreInstance.addkeepAlive(to.name as string)
+    }
     NProgress.done()
   })
 

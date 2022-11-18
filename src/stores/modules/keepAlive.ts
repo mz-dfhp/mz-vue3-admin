@@ -7,7 +7,7 @@ interface IKeepList {
 export const keepAliveStore = defineStore('keepAlive', {
   state(): IKeepList {
     return {
-      keepList: ['Keep-one-page', 'Keep-two-page', 'Keep-three-page']
+      keepList: []
     }
   },
   getters: {
@@ -17,7 +17,11 @@ export const keepAliveStore = defineStore('keepAlive', {
   },
   actions: {
     addkeepAlive(keepItem: string) {
-      this.keepList = [...this.keepList, keepItem]
+      this.keepList = Array.from(new Set([...this.keepList, keepItem]))
+    },
+    removekeepAlive(keepItem: string) {
+      const list = this.keepList.filter((item) => item !== keepItem)
+      this.keepList = list
     }
   }
 })

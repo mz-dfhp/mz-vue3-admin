@@ -1,7 +1,8 @@
 <script setup lang="ts" name="AppMain">
 import { keepAliveStore } from '@/stores/modules/keepAlive'
+import { computed } from 'vue'
 const keepAliveInstance = keepAliveStore()
-const keepList = keepAliveInstance.getkeepAlive
+const keepList = computed(() => keepAliveInstance.getkeepAlive)
 </script>
 
 <template>

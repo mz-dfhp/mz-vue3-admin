@@ -5,6 +5,9 @@ const input = ref('')
 <template>
   <div>
     <div>缓存组件三</div>
+    <br />
+    <br />
+    <br />
     <el-input v-model="input" placeholder="Please input" />
   </div>
 </template>
