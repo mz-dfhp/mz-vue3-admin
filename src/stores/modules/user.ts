@@ -9,7 +9,7 @@ interface IUser {
 export const userStore = defineStore('user', {
   state(): IUser {
     return {
-      token: '1212121',
+      token: '',
       userInfo: {
         permission: []
       }
@@ -18,6 +18,9 @@ export const userStore = defineStore('user', {
   getters: {
     getToken(state: IUser) {
       return state.token
+    },
+    getUserInfo(state: IUser) {
+      return state.userInfo
     }
   },
   actions: {
@@ -32,6 +35,11 @@ export const userStore = defineStore('user', {
     setUserInfo(userInfo: UserInfo) {
       this.userInfo = userInfo
     }
+  },
+  persist: {
+    storage: localStorage,
+    paths: ['token']
   }
 })
+
 export const userStoreWithout = () => userStore(store)

@@ -3,6 +3,9 @@
     <template v-if="item.children">
       <el-sub-menu :index="item.name" :key="item.name">
         <template #title>
+          <div class="menu-icon-box">
+            <BaseIcon style="visibility: visible"><HomeTwotone /></BaseIcon>
+          </div>
           <span>{{ item.title }}</span>
         </template>
         <AppMenuItem :menuList="item.children" />
@@ -18,6 +21,8 @@
 <script lang="ts" setup name="AppMenuItem">
 import { IPermissionList } from '@/interface'
 import { useRouter } from 'vue-router'
+import { HomeTwotone } from '@vicons/antd'
+import BaseIcon from '@/components/BaseIcon'
 const router = useRouter()
 interface IProps {
   menuList: Array<IPermissionList>
@@ -31,3 +36,12 @@ const menuItemClick = (e: any) => {
   })
 }
 </script>
+
+<style scoped lang="scss">
+.menu-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+</style>

@@ -20,20 +20,25 @@ const rules = reactive<FormRules>({
   ]
 })
 const FormRef = ref<FormInstance>()
+const loading = ref(false)
 const loginForm = reactive({
   userName: '',
   passWord: ''
 })
 const router = useRouter()
-const userStoreInstance = userStore()
-const submitForm = async () => {
-  await FormRef?.value?.validate(async (valid: any, fields: any) => {
+const submitForm = async (role: string) => {
+  loginForm.userName = role
+  loginForm.passWord = role
+  loading.value = true
+  await FormRef?.value?.validate(async (valid: boolean, fields: any) => {
     if (valid) {
-      await userStoreInstance.setToken('登录拿到的token')
+      await userStore().setToken(role)
+      loading.value = false
       router.replace({
         path: '/'
       })
     } else {
+      loading.value = false
       console.log('error submit!', fields)
     }
   })
@@ -48,11 +53,22 @@ const submitForm = async () => {
         <el-input v-model="loginForm.userName" />
       </el-form-item>
       <el-form-item prop="passWord">
-        <el-input v-model="loginForm.passWord" />
+        <el-input v-model="loginForm.passWord" type="passWord" />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" style="margin: 0 auto" @click="submitForm"
-          >login in</el-button
+        <el-button
+          type="primary"
+          style="margin: 0 auto"
+          :loading="loading"
+          @click="submitForm('admin')"
+          >admin</el-button
+        >
+        <el-button
+          type="primary"
+          style="margin: 0 auto"
+          :loading="loading"
+          @click="submitForm('test')"
+          >test</el-button
         >
       </el-form-item>
     </el-form>
@@ -76,6 +92,18 @@ const submitForm = async () => {
   border-radius: 8px;
   .login-form {
     padding: 20%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .login-box {
+    width: 60vw;
+    height: 60vw;
+  }
+}
+@media screen and (max-width: 600px) {
+  .login-box {
+    width: 80vw;
+    height: 80vw;
   }
 }
 </style>

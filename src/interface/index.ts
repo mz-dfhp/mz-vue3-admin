@@ -9,5 +9,6 @@ export interface IPermissionList {
 export interface UserInfo {
   name?: string
   avatar?: string
+  role?: string
   permission: Array<IPermissionList>
 }

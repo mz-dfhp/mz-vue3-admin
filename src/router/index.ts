@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { App } from 'vue'
-import basicsRoutes from './basicsRoutes'
+import { basicsRoutes } from './basicsRoutes'
 
 import { createRouterPermissions } from './permissions'
 

@@ -4,11 +4,12 @@ import { Router } from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { setAsyncRoutes } from './setRoutes'
-const userStoreInstance = userStoreWithout()
-const routeStoreInstance = routeStoreWithout()
+
 export function createRouterPermissions(router: Router) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   router.beforeEach(async (to, from, next) => {
+    const userStoreInstance = userStoreWithout()
+    const routeStoreInstance = routeStoreWithout()
     const token = userStoreInstance.getToken
     const routeLength = routeStoreInstance.getRoutes.length
     NProgress.start()

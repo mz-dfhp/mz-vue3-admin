@@ -26,13 +26,9 @@ export const tabsStore = defineStore('tabs', {
     }
   },
   actions: {
-    initTabs(list: RouteItem[]) {
-      this.tabList = list.filter((item) => !withoutTabs.includes(item.name))
-    },
     addTabs(route: RouteItem): void {
       const flag = filterList(this.tabList, route)
-      console.log(flag)
-      if (filterList(this.tabList, route)) return
+      if (flag) return
       this.tabList.push(route)
     },
     closeLeftTabs(route: RouteItem): void {
@@ -55,7 +51,7 @@ export const tabsStore = defineStore('tabs', {
     },
     closeOtherTabs(route: RouteItem): void {
       this.tabList = this.tabList.filter(
-        (item) => item.name === route.name || item.meta.noCloseTabs
+        (item) => item.name === route.name || item.meta.hide
       )
     },
     closeAllTabs() {

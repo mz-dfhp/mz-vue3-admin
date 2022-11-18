@@ -5,14 +5,16 @@ import AppHeader from './AppHeader/index.vue'
 import AppMain from './AppMain/index.vue'
 import AppTabs from './AppTabs/index.vue'
 import { settingStore } from '@/stores/modules/setting'
+import { computed } from 'vue'
 const settingStoreInstance = settingStore()
+const expansion = computed(() => settingStoreInstance.getExpansion)
 </script>
 <template>
   <div class="common-layout">
     <el-container>
       <el-aside width="auto" class="common-aside">
-        <AppLogo :expansion="settingStoreInstance.getExpansion" />
-        <AppMenu :expansion="settingStoreInstance.getExpansion" />
+        <AppLogo :expansion="expansion" />
+        <AppMenu :expansion="expansion" />
       </el-aside>
       <el-container>
         <el-header><AppHeader /></el-header>

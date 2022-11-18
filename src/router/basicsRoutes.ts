@@ -1,6 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
 
-const basicsRoutes: Array<RouteRecordRaw> = [
+export const basicsRoutes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
@@ -10,5 +10,21 @@ const basicsRoutes: Array<RouteRecordRaw> = [
     }
   }
 ]
-
-export default basicsRoutes
+export const errorRoutes: Array<RouteRecordRaw> = [
+  {
+    path: '/:path(.*)*',
+    name: '404',
+    component: () => import('@/views/error/404.vue'),
+    meta: {
+      title: '404'
+    }
+  },
+  {
+    path: '/403*',
+    name: '403',
+    component: () => import('@/views/error/403.vue'),
+    meta: {
+      title: '403'
+    }
+  }
+]
