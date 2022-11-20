@@ -7,7 +7,7 @@
       @open="handleOpen"
       @close="handleClose"
     >
-      <AppMenuItem :menuList="menuList" />
+      <AppMenuItem :menuList="menuList" icon />
     </el-menu>
   </div>
 </template>

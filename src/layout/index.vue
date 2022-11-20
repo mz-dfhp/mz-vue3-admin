@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import AppMenu from './AppMenu/index.vue'
-import AppLogo from './AppLogo/index.vue'
-import AppHeader from './AppHeader/index.vue'
-import AppMain from './AppMain/index.vue'
-import AppTabs from './AppTabs/index.vue'
-import { settingStore } from '@/stores/modules/setting'
-import { computed } from 'vue'
-const settingStoreInstance = settingStore()
-const expansion = computed(() => settingStoreInstance.getExpansion)
-</script>
 <template>
   <div class="common-layout">
     <el-container>
@@ -21,11 +10,24 @@ const expansion = computed(() => settingStoreInstance.getExpansion)
         <AppTabs />
         <el-main class="common-main">
           <AppMain />
+          <AppSetting />
         </el-main>
       </el-container>
     </el-container>
   </div>
 </template>
+<script setup lang="ts" name="AppLayout">
+import AppMenu from './AppMenu/index.vue'
+import AppLogo from './AppLogo/index.vue'
+import AppHeader from './AppHeader/index.vue'
+import AppMain from './AppMain/index.vue'
+import AppTabs from './AppTabs/index.vue'
+import AppSetting from './AppSetting/index.vue'
+import { settingStore } from '@/stores/modules/setting'
+import { computed } from 'vue'
+const settingStoreInstance = settingStore()
+const expansion = computed(() => settingStoreInstance.getExpansion)
+</script>
 <style scoped lang="scss" name="layout">
 .common-layout {
   min-height: 100%;

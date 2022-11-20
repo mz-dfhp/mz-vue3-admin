@@ -44,7 +44,6 @@ export function createRouterPermissions(router: Router) {
   router.afterEach((to, from, failure) => {
     const keepAliveStoreInstance = keepAliveStore()
     if (to.meta.keepAlive) {
-      console.log(to)
       keepAliveStoreInstance.addkeepAlive(to.name as string)
     }
     NProgress.done()

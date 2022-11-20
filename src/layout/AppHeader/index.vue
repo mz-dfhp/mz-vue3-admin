@@ -1,7 +1,19 @@
+<template>
+  <div class="h100% flex items-center">
+    <div @click="changeExpansion" class="mr20px">
+      <div
+        :class="
+          expansion ? 'i-zondicons-align-left' : 'i-zondicons-align-right'
+        "
+      ></div>
+    </div>
+    <BreadBox />
+    <RightPanel />
+  </div>
+</template>
 <script setup lang="ts" name="AppHeader">
 import BreadBox from './components/bread-box.vue'
 import RightPanel from './components/right-panel.vue'
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@vicons/antd'
 import { settingStore } from '@/stores/modules/setting'
 import { computed } from 'vue'
 const settingStoreInstance = settingStore()
@@ -10,29 +22,4 @@ const changeExpansion = () => {
 }
 const expansion = computed(() => settingStoreInstance.expansion)
 </script>
-
-<template>
-  <div class="app-header">
-    <div @click="changeExpansion" class="change-expansion">
-      <BaseIcon v-show="!expansion">
-        <MenuFoldOutlined />
-      </BaseIcon>
-      <BaseIcon>
-        <MenuUnfoldOutlined v-show="expansion" />
-      </BaseIcon>
-    </div>
-    <BreadBox />
-    <RightPanel />
-  </div>
-</template>
-
-<style scoped lang="scss">
-.app-header {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  .change-expansion {
-    padding-right: 20px;
-  }
-}
-</style>
+<style scoped lang="scss"></style>

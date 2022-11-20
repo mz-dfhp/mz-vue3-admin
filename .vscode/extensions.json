@@ -1,6 +1,7 @@
 {
   "recommendations": [
-    "Vue.volar"
+    "vue.volar",
+    "antfu.unocss"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll": false,

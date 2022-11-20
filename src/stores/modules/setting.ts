@@ -5,12 +5,14 @@ import { setThemeColor } from '@/utils/setting'
 interface ISettingList {
   expansion: boolean
   themeColor: string
+  appDark: boolean
 }
 export const settingStore = defineStore('setting', {
   state(): ISettingList {
     return {
-      expansion: false,
-      themeColor: 'pink'
+      expansion: false, //控制展开
+      themeColor: '#409eff', // 主题色
+      appDark: false //暗黑模式
     }
   },
   getters: {
@@ -19,6 +21,9 @@ export const settingStore = defineStore('setting', {
     },
     getThemeColor(state) {
       return state.themeColor
+    },
+    getAppDark(state) {
+      return state.appDark
     }
   },
   actions: {
@@ -28,8 +33,18 @@ export const settingStore = defineStore('setting', {
     setThemeColor(themeColor: string) {
       setThemeColor(themeColor)
       this.themeColor = themeColor
+    },
+    setAppDark(themeColor: boolean) {
+      this.appDark = themeColor
+      changeDark()
     }
+  },
+  persist: {
+    storage: localStorage,
+    paths: ['themeColor']
   }
 })
-// setThemeColor('pink')
+const changeDark = () => {
+  document.documentElement.classList.toggle('dark')
+}
 export const settingStoreWithout = () => settingStore(store)

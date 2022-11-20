@@ -1,3 +1,10 @@
+<template>
+  <el-breadcrumb separator="/" class="breadcrumb-box">
+    <el-breadcrumb-item v-for="item in breadList" :key="item.name">{{
+      item.title
+    }}</el-breadcrumb-item>
+  </el-breadcrumb>
+</template>
 <script setup lang="ts" name="Bread-box">
 import { Route } from '@/types/router'
 import { watch, ref } from 'vue'
@@ -12,13 +19,10 @@ watch(
   }
 )
 </script>
-
-<template>
-  <el-breadcrumb separator="/">
-    <el-breadcrumb-item v-for="item in breadList" :key="item.name">{{
-      item.title
-    }}</el-breadcrumb-item>
-  </el-breadcrumb>
-</template>
-
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@media screen and (max-width: 800px) {
+  .breadcrumb-box {
+    display: none;
+  }
+}
+</style>

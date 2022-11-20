@@ -13,39 +13,45 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 //component name
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 
+//unocss
+import Unocss from 'unocss/vite'
+
 const reslovePath = (pathName) => {
   return path.resolve(__dirname, pathName)
 }
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    vue(),
-    viteEslint(),
-    vueJsx(),
-    AutoImport({
-      resolvers: [ElementPlusResolver()]
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()]
-    }),
-    VueSetupExtend()
-  ],
-  resolve: {
-    alias: {
-      '@': reslovePath('./src')
+export default () => {
+  return defineConfig({
+    plugins: [
+      vue(),
+      viteEslint(),
+      vueJsx(),
+      AutoImport({
+        resolvers: [ElementPlusResolver()]
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()]
+      }),
+      VueSetupExtend(),
+      Unocss()
+    ],
+    resolve: {
+      alias: {
+        '@': reslovePath('./src')
+      },
+      extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.mjs']
     },
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.mjs']
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: '@import "@/styles/variables.scss";' // 踩坑记录 要加上;
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/styles/variables.scss";' // 踩坑记录 要加上;
+        }
       }
+    },
+    server: {
+      open: true,
+      port: 8080
     }
-  },
-  server: {
-    open: true,
-    port: 8080
-  }
-})
+  })
+}

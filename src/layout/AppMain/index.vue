@@ -1,10 +1,3 @@
-<script setup lang="ts" name="AppMain">
-import { keepAliveStore } from '@/stores/modules/keepAlive'
-import { computed } from 'vue'
-const keepAliveInstance = keepAliveStore()
-const keepList = computed(() => keepAliveInstance.getkeepAlive)
-</script>
-
 <template>
   <router-view v-slot="{ Component, route }">
     <transition mode="out-in" appear>
@@ -14,6 +7,13 @@ const keepList = computed(() => keepAliveInstance.getkeepAlive)
     </transition>
   </router-view>
 </template>
+
+<script setup lang="ts" name="AppMain">
+import { keepAliveStore } from '@/stores/modules/keepAlive'
+import { computed } from 'vue'
+const keepAliveInstance = keepAliveStore()
+const keepList = computed(() => keepAliveInstance.getkeepAlive)
+</script>
 
 <style scoped lang="scss">
 .v-enter-active,
