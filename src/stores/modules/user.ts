@@ -26,10 +26,8 @@ export const userStore = defineStore('user', {
   actions: {
     setToken(token: string) {
       return new Promise<void>((resolve) => {
-        setTimeout(() => {
-          this.token = token
-          resolve()
-        }, 2000)
+        this.token = token
+        resolve()
       })
     },
     setUserInfo(userInfo: UserInfo) {

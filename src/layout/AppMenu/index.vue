@@ -50,4 +50,18 @@ const handleClose = (key: string, keyPath: string[]) => {
 .common-menu:not(.el-menu--collapse) {
   width: 200px;
 }
+:deep(.el-menu-item.is-active) {
+  background: var(--el-color-primary-light-7);
+  position: relative;
+  &::after {
+    position: absolute;
+    content: '';
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 2px;
+    background: var(--el-color-primary);
+    border-radius: 2px;
+  }
+}
 </style>

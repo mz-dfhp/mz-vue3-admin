@@ -38,7 +38,7 @@ const vnode1 = h(
 )
 const vnode2 = h(
   'div', // type
-  { className: 'i-zondicons-brightness-down' }
+  { className: ' i-zondicons-light-bulb' }
 )
 
 const handleCommand = (command: string | number | object) => {

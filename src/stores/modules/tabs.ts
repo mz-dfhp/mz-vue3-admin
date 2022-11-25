@@ -57,6 +57,10 @@ export const tabsStore = defineStore('tabs', {
     closeAllTabs() {
       this.tabList = []
     }
+  },
+  persist: {
+    storage: localStorage,
+    paths: []
   }
 })
 

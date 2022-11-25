@@ -1,8 +1,11 @@
 :root {
   --bgc: #f5f5f5;
+  --tabs-hover: #cacaca;
   &.dark {
-    --bgc: #121212;
+    --bgc: #2a2a2e;
+    --tabs-hover: #cacaca;
   }
 }
 
 $color: var(--bgc);
+$tabsHover: var(--tabs-hover);

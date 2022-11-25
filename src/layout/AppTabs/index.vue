@@ -90,6 +90,71 @@ const getSimpleRoute = (routeInstance: any): RouteItem => {
           border: none !important;
           .el-tabs__item {
             border: none !important;
+            margin-left: -10px;
+            &:hover {
+              background: $tabsHover;
+              border-radius: 8px 8px 0 0;
+              position: relative;
+              z-index: 2;
+              &::before {
+                content: '';
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                left: -20px;
+                bottom: 0;
+                background: radial-gradient(
+                  circle at 0 0,
+                  transparent 20px,
+                  $tabsHover 21px
+                );
+              }
+              &::after {
+                content: '';
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                right: -20px;
+                bottom: 0;
+                background: radial-gradient(
+                  circle at 100% 0,
+                  transparent 20px,
+                  $tabsHover 21px
+                );
+              }
+            }
+          }
+          .el-tabs__item.is-active {
+            background: $color;
+            z-index: 1;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            &::before {
+              content: '';
+              position: absolute;
+              width: 20px;
+              height: 20px;
+              left: -20px;
+              bottom: 0;
+              background: radial-gradient(
+                circle at 0 0,
+                transparent 20px,
+                $color 21px
+              );
+            }
+            &::after {
+              content: '';
+              position: absolute;
+              width: 20px;
+              height: 20px;
+              right: -20px;
+              bottom: 0;
+              background: radial-gradient(
+                circle at 100% 0,
+                transparent 20px,
+                $color 21px
+              );
+            }
           }
         }
       }

@@ -1,3 +1,11 @@
+<template>
+  <div>
+    <div>组件一{{ userInstance.getToken }}</div>
+    <el-button @click="test(1)">测试</el-button>
+    <el-button @click="test(2)">测试1</el-button>
+  </div>
+</template>
+
 <script setup lang="ts" name="component-one">
 import { useRouter } from 'vue-router'
 import { userStore } from '@/stores/modules/user'
@@ -14,13 +22,5 @@ const test = (type: number) => {
   }
 }
 </script>
-
-<template>
-  <div>
-    <div>组件一{{ userInstance.getToken }}</div>
-    <el-button @click="test(1)">测试</el-button>
-    <el-button @click="test(2)">测试1</el-button>
-  </div>
-</template>
 
 <style scoped></style>

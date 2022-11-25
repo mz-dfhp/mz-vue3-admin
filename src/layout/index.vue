@@ -1,6 +1,6 @@
 <template>
   <div class="common-layout">
-    <el-container>
+    <el-container h-100vh>
       <el-aside width="auto" class="common-aside">
         <AppLogo :expansion="expansion" />
         <AppMenu :expansion="expansion" />
@@ -9,7 +9,9 @@
         <el-header><AppHeader /></el-header>
         <AppTabs />
         <el-main class="common-main">
-          <AppMain />
+          <div class="wapper min-h-100% min-w-100%">
+            <AppMain />
+          </div>
           <AppSetting />
         </el-main>
       </el-container>
@@ -33,9 +35,6 @@ const expansion = computed(() => settingStoreInstance.getExpansion)
   min-height: 100%;
   .common-main {
     background: $color;
-  }
-  .common-aside {
-    height: 100vh;
   }
 }
 </style>

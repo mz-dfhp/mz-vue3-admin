@@ -1,9 +1,7 @@
 import { UserInfo } from '@/interface'
 export function getUserInfo(role: string) {
   return new Promise<UserInfo>((resolve) => {
-    setTimeout(() => {
-      resolve(getRole(role))
-    }, 1000)
+    resolve(getRole(role))
   })
 }
 

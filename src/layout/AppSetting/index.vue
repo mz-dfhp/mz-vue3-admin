@@ -9,25 +9,31 @@
   </Teleport>
   <el-drawer v-model="show" destroy-on-close size="25%" title="项目配置">
     <el-divider>
-      主题色 <el-color-picker v-model="color" :predefine="predefineColors"
-    /></el-divider>
+      <div>主题色</div>
+      <el-color-picker
+        color-format="rgb"
+        v-model="settingInfo.color"
+        :predefine="predefineColors"
+      />
+    </el-divider>
+    <!-- <el-divider> 动画 </el-divider> -->
+    <template #footer>
+      <div style="flex: auto">
+        <el-button @click="show = false">cancel</el-button>
+        <el-button type="primary" @click="confirmClick">confirm</el-button>
+      </div>
+    </template>
   </el-drawer>
 </template>
 
 <script setup lang="ts" name="AppSetting">
-import { computed, ref } from 'vue'
 import { settingStore } from '@/stores/modules/setting'
+import { ref, reactive, watch } from 'vue'
 const settingStoreInstance = settingStore()
 const show = ref<boolean>(false)
 const showSetting = () => {
   show.value = true
 }
-const color = computed({
-  get: () => settingStoreInstance.getThemeColor,
-  set: (e) => {
-    settingStoreInstance.setThemeColor(e)
-  }
-})
 const predefineColors = ref([
   '#ff4500',
   '#ff8c00',
@@ -37,6 +43,18 @@ const predefineColors = ref([
   '#1e90ff',
   '#c71585'
 ])
+let settingInfo = reactive({
+  color: settingStoreInstance.getThemeColor
+})
+
+const confirmClick = () => {
+  settingStoreInstance.setThemeColor(settingInfo.color)
+  show.value = false
+}
+watch(show, (e) => {
+  if (!e) return
+  settingInfo.color = settingStoreInstance.getThemeColor
+})
 </script>
 
 <style lang="scss" scoped></style>

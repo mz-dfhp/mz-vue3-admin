@@ -2,16 +2,17 @@ import { defineStore } from 'pinia'
 import store from '@/stores'
 import { setThemeColor } from '@/utils/setting'
 
-interface ISettingList {
+export interface ISettingList {
   expansion: boolean
   themeColor: string
   appDark: boolean
 }
-export const settingStore = defineStore('setting', {
+const pid = 'STORE__SETTING'
+export const settingStore = defineStore(pid, {
   state(): ISettingList {
     return {
       expansion: false, //控制展开
-      themeColor: '#409eff', // 主题色
+      themeColor: 'rgb(64,158,255)', // 主题色
       appDark: false //暗黑模式
     }
   },
@@ -34,16 +35,17 @@ export const settingStore = defineStore('setting', {
       setThemeColor(themeColor)
       this.themeColor = themeColor
     },
-    setAppDark(themeColor: boolean) {
-      this.appDark = themeColor
+    setAppDark(dark: boolean) {
       changeDark()
+      this.appDark = dark
     }
   },
   persist: {
     storage: localStorage,
-    paths: ['themeColor']
+    paths: ['appDark', 'themeColor']
   }
 })
+
 const changeDark = () => {
   document.documentElement.classList.toggle('dark')
 }
