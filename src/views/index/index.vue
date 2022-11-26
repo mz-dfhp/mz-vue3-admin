@@ -73,7 +73,6 @@ watch(
   }
 )
 onMounted(() => {
-  console.log(echartOneRefs)
   echars.echartOne = showOne(echartOneRefs.value as HTMLElement)
   echars.echartTwo = showTwo(echartTwoRefs.value as HTMLElement)
   window.addEventListener('resize', handleEchars)

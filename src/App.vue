@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
 import { throttle } from 'lodash-es'
-import { settingStore } from '@/stores/modules/setting'
-
+import { useThemeColor, useExpansion, useDark } from '@/hooks'
 const globalResize = throttle(() => {
   const clientWidth = document.documentElement.clientWidth
-  settingStore().setExpansion(clientWidth < 800)
+  const { setExpansion } = useExpansion()
+  setExpansion(clientWidth < 800)
 }, 500)
 
 function settingApp() {
-  const settingStoreInStance = settingStore()
-  settingStoreInStance.getThemeColor &&
-    settingStoreInStance.setThemeColor(settingStoreInStance.getThemeColor)
-  settingStoreInStance.getAppDark && settingStoreInStance.setAppDark(true)
+  const { themeColor, setThemeColor } = useThemeColor()
+  const { dark, setDark } = useDark()
+  themeColor && setThemeColor(themeColor.value)
+  dark.value && setDark(true)
 }
 
 onMounted(() => {

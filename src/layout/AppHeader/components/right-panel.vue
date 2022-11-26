@@ -1,9 +1,16 @@
 <template>
   <div class="mla flex justify-around items-center">
     <div class="p-x-30px flex justify-around items-center">
-      <div class="i-fa-solid-abacus"></div>
+      <div
+        m-r-10px
+        cursor-pointer
+        class="i-zondicons-screen-full"
+        :class="full ? '1' : '2'"
+        @click="changeFullScreen"
+      ></div>
       <el-switch
-        v-model="appTheme"
+        :model-value="dark"
+        @change="(e: boolean) => setDark(e)"
         inline-prompt
         :active-icon="vnode1"
         :inactive-icon="vnode2"
@@ -13,7 +20,7 @@
       <img
         width="36"
         height="36"
-        style="border-radius: 50%"
+        class="rounded-full cursor-pointer"
         :src="userInfo.avatar"
       />
       <template #dropdown>
@@ -26,20 +33,18 @@
   </div>
 </template>
 <script setup lang="ts" name="RightPanel">
-import { settingStore } from '@/stores/modules/setting'
+import { useDark, useFullScreen } from '@/hooks'
 import { userStore } from '@/stores/modules/user'
-import { computed, h } from 'vue'
-const settingStoreInstance = settingStore()
+import { h } from 'vue'
+
+const { dark, setDark } = useDark()
+
+const { full, changeFullScreen } = useFullScreen()
+
 const userInfo = userStore().getUserInfo
 
-const vnode1 = h(
-  'div', // type
-  { class: 'i-zondicons-brightness-up' }
-)
-const vnode2 = h(
-  'div', // type
-  { className: ' i-zondicons-light-bulb' }
-)
+const vnode1 = h('div', { class: 'i-zondicons-brightness-up' })
+const vnode2 = h('div', { className: ' i-zondicons-light-bulb' })
 
 const handleCommand = (command: string | number | object) => {
   if (command === 'login-out') {
@@ -47,12 +52,6 @@ const handleCommand = (command: string | number | object) => {
     window.location.reload()
   }
 }
-const appTheme = computed({
-  get: () => settingStoreInstance.getAppDark,
-  set: (val) => {
-    settingStoreInstance.setAppDark(val)
-  }
-})
 </script>
 
 <style scoped lang="scss"></style>

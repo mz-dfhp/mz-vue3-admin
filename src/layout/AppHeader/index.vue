@@ -1,7 +1,8 @@
 <template>
   <div class="h100% flex items-center">
-    <div @click="changeExpansion" class="mr20px">
+    <div @click="setExpansion(!expansion)" class="mr20px">
       <div
+        cursor-pointer
         :class="
           expansion ? 'i-zondicons-align-left' : 'i-zondicons-align-right'
         "
@@ -12,14 +13,9 @@
   </div>
 </template>
 <script setup lang="ts" name="AppHeader">
+import { useExpansion } from '@/hooks'
 import BreadBox from './components/bread-box.vue'
 import RightPanel from './components/right-panel.vue'
-import { settingStore } from '@/stores/modules/setting'
-import { computed } from 'vue'
-const settingStoreInstance = settingStore()
-const changeExpansion = () => {
-  settingStoreInstance.setExpansion(!settingStoreInstance.expansion)
-}
-const expansion = computed(() => settingStoreInstance.expansion)
+const { expansion, setExpansion } = useExpansion()
 </script>
 <style scoped lang="scss"></style>

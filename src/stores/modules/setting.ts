@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import store from '@/stores'
-import { setThemeColor } from '@/utils/setting'
 
 export interface ISettingList {
   expansion: boolean
@@ -32,11 +31,9 @@ export const settingStore = defineStore(pid, {
       this.expansion = flag
     },
     setThemeColor(themeColor: string) {
-      setThemeColor(themeColor)
       this.themeColor = themeColor
     },
     setAppDark(dark: boolean) {
-      changeDark()
       this.appDark = dark
     }
   },
@@ -46,7 +43,4 @@ export const settingStore = defineStore(pid, {
   }
 })
 
-const changeDark = () => {
-  document.documentElement.classList.toggle('dark')
-}
 export const settingStoreWithout = () => settingStore(store)

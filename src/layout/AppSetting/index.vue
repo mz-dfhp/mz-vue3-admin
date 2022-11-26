@@ -27,9 +27,10 @@
 </template>
 
 <script setup lang="ts" name="AppSetting">
-import { settingStore } from '@/stores/modules/setting'
+import { useThemeColor } from '@/hooks'
 import { ref, reactive, watch } from 'vue'
-const settingStoreInstance = settingStore()
+
+const { themeColor, setThemeColor } = useThemeColor()
 const show = ref<boolean>(false)
 const showSetting = () => {
   show.value = true
@@ -44,16 +45,16 @@ const predefineColors = ref([
   '#c71585'
 ])
 let settingInfo = reactive({
-  color: settingStoreInstance.getThemeColor
+  color: themeColor.value
 })
 
 const confirmClick = () => {
-  settingStoreInstance.setThemeColor(settingInfo.color)
+  setThemeColor(settingInfo.color)
   show.value = false
 }
 watch(show, (e) => {
   if (!e) return
-  settingInfo.color = settingStoreInstance.getThemeColor
+  settingInfo.color = themeColor.value
 })
 </script>
 

@@ -3,6 +3,7 @@
     "vue.volar",
     "antfu.unocss"
   ],
+  
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
     "source.fixAll.eslint": true,
@@ -10,5 +11,11 @@
   // 保存的时候自动格式化
   "editor.formatOnSave": true,
   // 默认格式化工具选择prettier
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.quickSuggestions": {
+    //开启自动显示建议
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
 }
