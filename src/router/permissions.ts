@@ -9,6 +9,7 @@ import { setAsyncRoutes } from './setRoutes'
 export function createRouterPermissions(router: Router) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   router.beforeEach(async (to, from, next) => {
+    to.meta.title && (document.title = to.meta.title)
     const userStoreInstance = userStoreWithout()
     const routeStoreInstance = routeStoreWithout()
     const token = userStoreInstance.getToken

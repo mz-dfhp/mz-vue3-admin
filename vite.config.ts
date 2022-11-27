@@ -21,7 +21,9 @@ const reslovePath = (pathName) => {
 }
 
 // https://vitejs.dev/config/
-export default () => {
+export default ({ mode, command }) => {
+  console.log(mode, 'mode')
+  console.log(command, 'command')
   return defineConfig({
     plugins: [
       vue(),
@@ -52,6 +54,7 @@ export default () => {
     server: {
       open: true,
       port: 8080
-    }
+    },
+    build: {}
   })
 }
