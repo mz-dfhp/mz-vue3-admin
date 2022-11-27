@@ -4,9 +4,10 @@
       <div
         m-r-10px
         cursor-pointer
-        class="i-zondicons-screen-full"
-        :class="full ? '1' : '2'"
-        @click="changeFullScreen"
+        :class="
+          isFullscreen ? 'i-zondicons-edit-crop' : 'i-zondicons-screen-full'
+        "
+        @click="toggle"
       ></div>
       <el-switch
         :model-value="dark"
@@ -33,13 +34,13 @@
   </div>
 </template>
 <script setup lang="ts" name="RightPanel">
-import { useDark, useFullScreen } from '@/hooks'
+import { useDark } from '@/hooks'
+import { useFullscreen } from '@vueuse/core'
 import { userStore } from '@/stores/modules/user'
 import { h } from 'vue'
 
 const { dark, setDark } = useDark()
-
-const { full, changeFullScreen } = useFullScreen()
+const { isFullscreen, toggle } = useFullscreen()
 
 const userInfo = userStore().getUserInfo
 

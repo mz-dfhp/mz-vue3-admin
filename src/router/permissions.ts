@@ -31,8 +31,10 @@ export function createRouterPermissions(router: Router) {
     } else {
       console.log('无token')
       if (to.path !== '/login') {
-        next({
-          path: '/login'
+        console.log('无token 进其他页面')
+        return next({
+          path: '/login',
+          replace: true
         })
       } else {
         next()

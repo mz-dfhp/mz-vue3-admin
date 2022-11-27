@@ -20,7 +20,7 @@ export const errorRoutes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: '/403*',
+    path: '/403',
     name: '403',
     component: () => import('@/views/error/403.vue'),
     meta: {

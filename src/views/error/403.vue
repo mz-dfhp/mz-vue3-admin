@@ -1,6 +1,22 @@
-<script setup lang="ts" name="Page403"></script>
 <template>
-  <div class="error-page">403</div>
+  <div class="error-page" flex-center flex-col w100vw h100vh>
+    <div class="text-30">403</div>
+    <el-button type="primary" @click="toHome">去首页</el-button>
+  </div>
 </template>
+<script setup lang="ts" name="Page403">
+import { PageEnum } from '@/enmus/pageEnums'
+import { useRouter } from 'vue-router'
+const useRouterInstance = useRouter()
 
-<style></style>
+const toHome = () => {
+  useRouterInstance.replace({
+    path: PageEnum.ROOT_INDEX
+  })
+}
+</script>
+<style scoped lang="scss">
+.error-page {
+  background: var(--el-color-primary-light-3);
+}
+</style>

@@ -1,3 +1,60 @@
+<template>
+  <div class="bg-#5B86E5 w100% h100% flex-center">
+    <div class="w80% h80% bg-#ABC1F2 flex rounded-10px overflow-hidden">
+      <div lg-flex-1></div>
+      <div class="bg-#ffffff flex-1 flex">
+        <el-form
+          class="m-auto w80%"
+          :model="loginForm"
+          ref="FormRef"
+          :rules="rules"
+        >
+          <el-form-item>
+            <div class="text-8 font-bold p-b-10 text-#5B86E5">
+              MZ后台管理系统
+            </div>
+          </el-form-item>
+          <el-form-item prop="userName">
+            <el-input v-model="loginForm.userName" placeholder="userName" />
+          </el-form-item>
+          <el-form-item prop="passWord">
+            <el-input
+              v-model="loginForm.passWord"
+              type="passWord"
+              placeholder="passWord"
+            />
+          </el-form-item>
+          <el-form-item>
+            <el-button
+              type="primary"
+              class="w-100%"
+              :loading="loading"
+              @click="submitForm('')"
+              >login</el-button
+            >
+          </el-form-item>
+          <el-form-item>
+            <el-button
+              type="primary"
+              size="small"
+              :loading="loading"
+              @click="submitForm('admin')"
+              >admin</el-button
+            >
+            <el-button
+              type="primary"
+              size="small"
+              :loading="loading"
+              @click="submitForm('test')"
+              >test</el-button
+            >
+          </el-form-item>
+        </el-form>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { userStore } from '@/stores/modules/user'
@@ -27,9 +84,10 @@ const loginForm = reactive({
 })
 const router = useRouter()
 const submitForm = async (role: string) => {
-  loginForm.userName = role
-  loginForm.passWord = role
-  loading.value = true
+  role &&
+    ((loginForm.userName = role),
+    (loginForm.passWord = role),
+    (loading.value = true))
   await FormRef?.value?.validate(async (valid: boolean, fields: any) => {
     if (valid) {
       await userStore().setToken(role)
@@ -45,65 +103,10 @@ const submitForm = async (role: string) => {
 }
 </script>
 
-<template>
-  <div class="login-bgc"></div>
-  <div class="login-box">
-    <el-form :model="loginForm" class="login-form" ref="FormRef" :rules="rules">
-      <el-form-item prop="userName">
-        <el-input v-model="loginForm.userName" />
-      </el-form-item>
-      <el-form-item prop="passWord">
-        <el-input v-model="loginForm.passWord" type="passWord" />
-      </el-form-item>
-      <el-form-item>
-        <el-button
-          type="primary"
-          style="margin: 0 auto"
-          :loading="loading"
-          @click="submitForm('admin')"
-          >admin</el-button
-        >
-        <el-button
-          type="primary"
-          style="margin: 0 auto"
-          :loading="loading"
-          @click="submitForm('test')"
-          >test</el-button
-        >
-      </el-form-item>
-    </el-form>
-  </div>
-</template>
-
 <style scoped lang="scss">
-.login-bgc {
-  height: 100vh;
-  background: url(../../assets/images/login.jpg) 100% 100% fixed no-repeat;
-  background-size: cover;
-}
-.login-box {
-  position: fixed;
-  width: 40vw;
-  height: 35vw;
-  background: rgba(255, 255, 255, 0.4);
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 8px;
-  .login-form {
-    padding: 20%;
-  }
-}
 @media screen and (max-width: 800px) {
-  .login-box {
-    width: 60vw;
-    height: 60vw;
-  }
-}
-@media screen and (max-width: 600px) {
-  .login-box {
-    width: 80vw;
-    height: 80vw;
+  .left-box {
+    display: none;
   }
 }
 </style>

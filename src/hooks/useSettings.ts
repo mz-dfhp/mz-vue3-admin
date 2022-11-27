@@ -58,16 +58,3 @@ export function useExpansion() {
   }
   return { expansion, setExpansion }
 }
-
-/**
- * 全屏
- * @returns
- */
-export function useFullScreen() {
-  const full = ref<boolean>(false)
-  function changeFullScreen(): void {
-    full.value = !full.value
-    console.log(full.value)
-  }
-  return { full, changeFullScreen }
-}
