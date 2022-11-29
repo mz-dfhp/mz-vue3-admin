@@ -8,13 +8,11 @@ export interface ISettingList {
 }
 const pid = 'STORE__SETTING'
 export const settingStore = defineStore(pid, {
-  state(): ISettingList {
-    return {
-      expansion: false, //控制展开
-      themeColor: 'rgb(64,158,255)', // 主题色
-      appDark: false //暗黑模式
-    }
-  },
+  state: (): ISettingList => ({
+    expansion: false, //控制展开
+    themeColor: 'rgb(64,158,255)', // 主题色
+    appDark: false //暗黑模式
+  }),
   getters: {
     getExpansion(state: ISettingList) {
       return state.expansion

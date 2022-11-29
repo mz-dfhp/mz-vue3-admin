@@ -14,7 +14,8 @@ const withoutTabs: string[] = []
 interface ITabsState {
   tabList: RouteItem[]
 }
-export const tabsStore = defineStore('tabs', {
+const pid = 'STORE__TABS'
+export const tabsStore = defineStore(pid, {
   state: (): ITabsState => {
     return {
       tabList: []

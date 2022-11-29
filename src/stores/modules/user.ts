@@ -6,15 +6,14 @@ interface IUser {
   token: string
   userInfo: UserInfo
 }
-export const userStore = defineStore('user', {
-  state(): IUser {
-    return {
-      token: '',
-      userInfo: {
-        permission: []
-      }
+const pid = 'STORE__USER'
+export const userStore = defineStore(pid, {
+  state: (): IUser => ({
+    token: '',
+    userInfo: {
+      permission: []
     }
-  },
+  }),
   getters: {
     getToken(state: IUser) {
       return state.token

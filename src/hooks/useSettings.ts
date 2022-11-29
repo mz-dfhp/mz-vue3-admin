@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { computed } from 'vue'
 import { settingStore } from '@/stores/modules/setting'
 
 /**
@@ -7,9 +7,8 @@ import { settingStore } from '@/stores/modules/setting'
  */
 export function useDark() {
   const settingStoreInstance = settingStore()
-  const dark = ref(settingStoreInstance.getAppDark)
+  const dark = computed(() => settingStoreInstance.getAppDark)
   function setDark(flag: boolean) {
-    dark.value = flag
     settingStoreInstance.setAppDark(flag)
     document.documentElement.classList.toggle('dark')
   }
@@ -25,7 +24,7 @@ export function useThemeColor() {
     [propName: string]: string | number
   }
   const settingStoreInstance = settingStore()
-  const themeColor = ref(settingStoreInstance.getThemeColor)
+  const themeColor = computed(() => settingStoreInstance.getThemeColor)
   function setThemeColor(color: string) {
     settingStoreInstance.setThemeColor(color)
     const el: HTMLElement = document.documentElement
@@ -51,9 +50,8 @@ export function useThemeColor() {
  */
 export function useExpansion() {
   const settingStoreInstance = settingStore()
-  const expansion = ref(settingStoreInstance.getExpansion)
+  const expansion = computed(() => settingStoreInstance.getExpansion)
   function setExpansion(flag: boolean) {
-    expansion.value = flag
     settingStoreInstance.setExpansion(flag)
   }
   return { expansion, setExpansion }

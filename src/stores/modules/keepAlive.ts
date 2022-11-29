@@ -4,12 +4,11 @@ import store from '@/stores'
 interface IKeepList {
   keepList: Array<string>
 }
-export const keepAliveStore = defineStore('keepAlive', {
-  state(): IKeepList {
-    return {
-      keepList: []
-    }
-  },
+const pid = 'STORE__KEEPALIVE'
+export const keepAliveStore = defineStore(pid, {
+  state: (): IKeepList => ({
+    keepList: []
+  }),
   getters: {
     getkeepAlive(state: IKeepList) {
       return state.keepList

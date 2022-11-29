@@ -7,7 +7,12 @@
       ></div>
     </div>
   </Teleport>
-  <el-drawer v-model="show" destroy-on-close size="25%" title="项目配置">
+  <el-drawer
+    v-model="show"
+    destroy-on-close
+    :size="settingWidth"
+    title="项目配置"
+  >
     <el-divider>
       <div>主题色</div>
       <el-color-picker
@@ -28,7 +33,11 @@
 
 <script setup lang="ts" name="AppSetting">
 import { useThemeColor } from '@/hooks'
-import { ref, reactive, watch } from 'vue'
+import { ref, reactive, watch, computed } from 'vue'
+import { useWindowSize } from '@vueuse/core'
+
+const { width } = useWindowSize()
+const settingWidth = computed(() => (width.value < 600 ? '80%' : '400px'))
 
 const { themeColor, setThemeColor } = useThemeColor()
 const show = ref<boolean>(false)

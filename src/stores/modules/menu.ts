@@ -6,12 +6,11 @@ import { IPermissionList } from '@/interface'
 interface IMenu {
   menus: IPermissionList[]
 }
-export const menuStore = defineStore('menu', {
-  state(): IMenu {
-    return {
-      menus: []
-    }
-  },
+const pid = 'STORE__MENU'
+export const menuStore = defineStore(pid, {
+  state: (): IMenu => ({
+    menus: []
+  }),
   getters: {
     getMenus(state: IMenu) {
       return state.menus

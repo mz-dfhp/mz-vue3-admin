@@ -6,12 +6,11 @@ import { RouteRecordRaw } from 'vue-router'
 interface IRoute {
   routes: Array<RouteRecordRaw>
 }
-export const routeStore = defineStore('route', {
-  state(): IRoute {
-    return {
-      routes: []
-    }
-  },
+const pid = 'STORE__ROUTE'
+export const routeStore = defineStore(pid, {
+  state: (): IRoute => ({
+    routes: []
+  }),
   getters: {
     getRoutes(state: IRoute) {
       const copeRoutes = cloneDeep(state.routes)

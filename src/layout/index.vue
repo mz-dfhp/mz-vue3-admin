@@ -25,10 +25,8 @@ import AppHeader from './AppHeader/index.vue'
 import AppMain from './AppMain/index.vue'
 import AppTabs from './AppTabs/index.vue'
 import AppSetting from './AppSetting/index.vue'
-import { settingStore } from '@/stores/modules/setting'
-import { computed } from 'vue'
-const settingStoreInstance = settingStore()
-const expansion = computed(() => settingStoreInstance.getExpansion)
+import { useExpansion } from '@/hooks'
+const { expansion } = useExpansion()
 </script>
 <style scoped lang="scss" name="layout">
 .common-layout {

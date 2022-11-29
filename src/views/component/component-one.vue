@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div>组件一{{ userInstance.getToken }}</div>
-    <el-button @click="test(1)">测试</el-button>
-    <el-button @click="test(2)">测试1</el-button>
+    <div>组件一</div>
+    <el-button @click="test(1)">去首页</el-button>
   </div>
 </template>
 

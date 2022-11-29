@@ -16,8 +16,8 @@ function getRole(role: string): UserInfo {
     role,
     avatar:
       role === 'admin'
-        ? 'https://user-images.githubusercontent.com/63582593/202658523-8ab8372b-c554-45e9-9786-70754b706145.jpg'
-        : 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
+        ? 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+        : 'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
     permission: [
       {
         path: '/component',
