@@ -8,7 +8,8 @@ const routes: Array<RouteRecordRaw> = [
     component: layout,
     meta: {
       title: '缓存Keep',
-      sort: 3
+      sort: 3,
+      icon: 'i-zondicons-text-box'
     },
     children: [
       {
@@ -18,6 +19,16 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '缓存组件一',
           keepAlive: true
+        }
+      },
+      {
+        path: 'keep-one-info',
+        name: `${routeName}-one-info`,
+        component: () => import('@/views/keep/keep-one-page-info.vue'),
+        meta: {
+          title: '缓存组件一(详情页)',
+          hide: true,
+          activeMenu: `${routeName}-one`
         }
       },
       {

@@ -4,6 +4,7 @@
       class="common-menu"
       :default-active="activeMenu"
       :collapse="props.expansion"
+      unique-opened
       @open="handleOpen"
       @close="handleClose"
     >
@@ -26,11 +27,11 @@ const props = withDefaults(defineProps<Props>(), {
   expansion: true
 })
 let activeMenu = ref<RouteRecordName | null | undefined>('')
-activeMenu.value = route.name
+activeMenu.value = route.meta.activeMenu || route.name
 watch(
   () => route.name,
-  (e) => {
-    activeMenu.value = e
+  () => {
+    activeMenu.value = route.meta.activeMenu || route.name
   }
 )
 const menuList = menuStoreInstance.getMenus

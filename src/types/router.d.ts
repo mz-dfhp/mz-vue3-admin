@@ -8,6 +8,7 @@ declare module 'vue-router' {
     title: string
     hide?: boolean
     sort?: number
+    icon?: string
   }
 }
 declare namespace Route {

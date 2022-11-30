@@ -8,7 +8,8 @@ const routes: Array<RouteRecordRaw> = [
     component: layout,
     meta: {
       title: '组件',
-      sort: 2
+      sort: 3,
+      icon: 'i-zondicons-load-balancer'
     },
     children: [
       {

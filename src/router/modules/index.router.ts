@@ -8,7 +8,8 @@ const routes: Array<RouteRecordRaw> = [
     component: layout,
     meta: {
       title: '首页',
-      sort: 1
+      sort: 1,
+      icon: 'i-zondicons-view-tile'
     },
     redirect: '/index',
     children: [

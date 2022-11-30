@@ -1,6 +1,6 @@
 <template>
   <div class="error-page" flex-center flex-col w100vw h100vh>
-    <div class="text-30">403</div>
+    <div class="text-30 animate-bounce">403</div>
     <el-button type="primary" @click="toHome">去首页</el-button>
   </div>
 </template>

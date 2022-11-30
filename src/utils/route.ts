@@ -15,8 +15,9 @@ function flatRoutes(
         {
           path: element.path,
           name: element?.name,
-          title: element?.meta?.title,
-          hide: element?.meta?.hide
+          ...element?.meta
+          // title: element?.meta?.title,
+          // hide: element?.meta?.hide
         }
       ]
     }
@@ -45,14 +46,16 @@ export function flatSystemRoutes(systemRoutes: RouteRecordRaw[]) {
           {
             path: route.path,
             name: route?.name,
-            title: route?.meta?.title,
-            hide: route?.meta?.hide
+            ...route.meta
+            // title: route?.meta?.title,
+            // hide: route?.meta?.hide
           },
           {
             path: sonRoute.path,
             name: sonRoute?.name,
-            title: sonRoute?.meta?.title,
-            hide: sonRoute?.meta?.hide
+            ...sonRoute?.meta
+            // title: sonRoute?.meta?.title,
+            // hide: sonRoute?.meta?.hide
           }
         ]
         if (sonRoute.meta) {
@@ -79,8 +82,11 @@ export function diffRouterList(
 ): Array<RouteRecordRaw> {
   const resultRoutes: Array<RouteRecordRaw> = []
   allRoutes.forEach((item) => {
+    if (item?.meta?.hide) {
+      resultRoutes.push(item)
+    }
     userRoutes.forEach((Item) => {
-      if (item.name === Item.name || item?.meta?.hide) {
+      if (item.name === Item.name) {
         if (item.children?.length && Item.children?.length) {
           item.children = diffRouterList(item.children, Item.children)
         }
@@ -91,6 +97,25 @@ export function diffRouterList(
   return resultRoutes
 }
 
-export function sortList(list: IPermissionList[]) {
-  return list.slice(0).sort((a, b) => (a?.sort || 1) - (b?.sort || 0))
+/**
+ *
+ * @param list
+ * @returns 左侧菜单栏 后期根据后端字段自行修改
+ *          这个要删掉的 因为后端的返回的格式不要转换
+ *          只是前端自动生成方便一点
+ */
+export function formatteRoutes(list: Array<RouteRecordRaw>) {
+  const result: IPermissionList[] = []
+  list.forEach((item) => {
+    !item.meta?.hide &&
+      result.push({
+        path: item.path,
+        name: item.name as string,
+        title: item.meta?.title,
+        sort: item.meta?.sort,
+        icon: item.meta?.icon,
+        children: item.children ? formatteRoutes(item.children) : undefined
+      })
+  })
+  return result
 }

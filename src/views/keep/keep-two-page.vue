@@ -5,11 +5,13 @@ const input = ref('')
 
 <template>
   <div>
-    <div>缓存组件二</div>
+    <el-card shadow="hover">
+      <div>缓存组件二</div>
+    </el-card>
     <br />
-    <br />
-    <br />
-    <el-input v-model="input" placeholder="Please input" />
+    <el-card shadow="hover">
+      <el-input v-model="input" placeholder="Please input" />
+    </el-card>
   </div>
 </template>
 

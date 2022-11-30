@@ -3,6 +3,7 @@ export interface IPermissionList {
   path: string
   title?: string
   sort?: number
+  icon?: string
   children?: Array<IPermissionList>
 }
 
