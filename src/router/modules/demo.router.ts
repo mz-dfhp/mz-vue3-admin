@@ -19,15 +19,23 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '错误页'
         }
+      },
+      {
+        path: 'demo-two',
+        name: `${routeName}-two`,
+        component: () => import('@/views/demo/demo-two'),
+        meta: {
+          title: 'tsx'
+        }
+      },
+      {
+        path: 'demo-three',
+        name: `${routeName}-three`,
+        component: () => import('@/views/demo/demo-three.vue'),
+        meta: {
+          title: 'iframe'
+        }
       }
-      // {
-      //   path: 'demo-two',
-      //   name: `${routeName}-two`,
-      //   component: () => import('@/views/demo/demo-two.vue'),
-      //   meta: {
-      //     title: '手写qiankun'
-      //   }
-      // }
     ]
   }
 ]
