@@ -3,14 +3,15 @@
     <img
       width="36"
       height="36"
-      class="rounded-full cursor-pointer"
-      src="../../assets/images/logo.jpg"
+      class="animate-bounce cursor-pointer"
+      :src="Logo"
     />
-    <div class="ml10px" v-if="!props.expansion">admin</div>
+    <div class="ml10px" v-if="!props.expansion">木子</div>
   </div>
 </template>
 
 <script setup lang="ts" name="AppLogo">
+import Logo from '@/assets/svg/vue.svg'
 interface Props {
   expansion: boolean
 }

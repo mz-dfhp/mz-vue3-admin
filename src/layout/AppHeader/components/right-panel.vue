@@ -1,6 +1,6 @@
 <template>
   <div class="mla flex justify-around items-center">
-    <div class="p-x-30px flex justify-around items-center">
+    <div class="p-x-30px flex justify-around items-center mini-operation">
       <svg
         width="3.69em"
         height="1em"
@@ -74,4 +74,10 @@ const github = () => {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@media screen and (max-width: 440px) {
+  .mini-operation {
+    display: none;
+  }
+}
+</style>

@@ -125,7 +125,7 @@ const getSimpleRoute = (routeInstance: any): RouteItem => {
             }
           }
           .el-tabs__item.is-active {
-            background: $color;
+            background: $mainColor;
             z-index: 1;
             border-radius: 8px 8px 0 0;
             position: relative;
@@ -139,7 +139,7 @@ const getSimpleRoute = (routeInstance: any): RouteItem => {
               background: radial-gradient(
                 circle at 0 0,
                 transparent 20px,
-                $color 21px
+                $mainColor 21px
               );
             }
             &::after {
@@ -152,7 +152,7 @@ const getSimpleRoute = (routeInstance: any): RouteItem => {
               background: radial-gradient(
                 circle at 100% 0,
                 transparent 20px,
-                $color 21px
+                $mainColor 21px
               );
             }
           }

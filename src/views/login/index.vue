@@ -10,9 +10,7 @@
           :rules="rules"
         >
           <el-form-item>
-            <div class="text-8 font-bold p-b-10 text-#5B86E5">
-              MZ后台管理系统
-            </div>
+            <div class="text-8 font-bold p-b-10 text-#5B86E5">木子</div>
           </el-form-item>
           <el-form-item prop="userName">
             <el-input v-model="loginForm.userName" placeholder="userName" />

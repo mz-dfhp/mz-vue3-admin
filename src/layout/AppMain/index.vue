@@ -12,6 +12,7 @@
 import { keepAliveStore } from '@/stores/modules/keepAlive'
 import { computed } from 'vue'
 const keepAliveInstance = keepAliveStore()
+
 const keepList = computed(() => keepAliveInstance.getkeepAlive)
 </script>
 
