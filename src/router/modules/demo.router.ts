@@ -35,6 +35,22 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: 'iframe'
         }
+      },
+      {
+        path: 'demo-four',
+        name: `${routeName}-four`,
+        component: () => import('@/views/demo/demo-four.vue'),
+        meta: {
+          title: '手写mini-qiankun'
+        }
+      },
+      {
+        path: 'demo-five',
+        name: `${routeName}-five`,
+        component: () => import('@/views/demo/demo-five.vue'),
+        meta: {
+          title: '拖拽'
+        }
       }
     ]
   }
