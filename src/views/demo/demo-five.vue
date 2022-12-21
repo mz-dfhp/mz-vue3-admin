@@ -118,22 +118,28 @@ const drag = ref<boolean>(false)
 :deep(.el-col) {
   padding: 5px;
 }
+
 .flip-list-move {
   transition: transform 0.5s;
 }
+
 .no-move {
   transition: transform 0s;
 }
+
 .ghost {
-  opacity: 0.5;
   background: #c8ebfb;
+  opacity: 0.5;
 }
+
 .list-group {
   min-height: 20px;
 }
+
 .list-group-item {
   cursor: move;
 }
+
 .list-group-item i {
   cursor: pointer;
 }

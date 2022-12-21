@@ -84,38 +84,44 @@ const getSimpleRoute = (routeInstance: any): RouteItem => {
     .el-tabs__header {
       margin: 0;
       border-bottom: none;
+
       .el-tabs__nav-scroll {
         padding: 0 20px;
+
         .el-tabs__nav {
           border: none !important;
+
           .el-tabs__item {
-            border: none !important;
             margin-left: -10px;
+            border: none !important;
+
             &:hover {
+              z-index: 2;
+              position: relative;
               background: $tabsHover;
               border-radius: 8px 8px 0 0;
-              position: relative;
-              z-index: 2;
+
               &::before {
-                content: '';
                 position: absolute;
+                content: '';
+                bottom: 0;
+                left: -20px;
                 width: 20px;
                 height: 20px;
-                left: -20px;
-                bottom: 0;
                 background: radial-gradient(
                   circle at 0 0,
                   transparent 20px,
                   $tabsHover 21px
                 );
               }
+
               &::after {
-                content: '';
                 position: absolute;
-                width: 20px;
-                height: 20px;
+                content: '';
                 right: -20px;
                 bottom: 0;
+                width: 20px;
+                height: 20px;
                 background: radial-gradient(
                   circle at 100% 0,
                   transparent 20px,
@@ -124,31 +130,34 @@ const getSimpleRoute = (routeInstance: any): RouteItem => {
               }
             }
           }
+
           .el-tabs__item.is-active {
-            background: $mainColor;
             z-index: 1;
-            border-radius: 8px 8px 0 0;
             position: relative;
+            background: $mainColor;
+            border-radius: 8px 8px 0 0;
+
             &::before {
-              content: '';
               position: absolute;
+              content: '';
+              bottom: 0;
+              left: -20px;
               width: 20px;
               height: 20px;
-              left: -20px;
-              bottom: 0;
               background: radial-gradient(
                 circle at 0 0,
                 transparent 20px,
                 $mainColor 21px
               );
             }
+
             &::after {
-              content: '';
               position: absolute;
-              width: 20px;
-              height: 20px;
+              content: '';
               right: -20px;
               bottom: 0;
+              width: 20px;
+              height: 20px;
               background: radial-gradient(
                 circle at 100% 0,
                 transparent 20px,
