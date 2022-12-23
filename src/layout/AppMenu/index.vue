@@ -53,19 +53,31 @@ const handleClose = (key: string, keyPath: string[]) => {
   width: 200px;
 }
 
+:deep(.el-menu-item) {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    right: 0;
+    width: 2px;
+    height: 0;
+    background: var(--el-color-primary);
+    border-radius: 2px;
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateY(-50%);
+  }
+}
+
 :deep(.el-menu-item.is-active) {
   position: relative;
   background: var(--el-color-primary-light-7);
 
   &::after {
-    position: absolute;
-    content: '';
-    right: 0;
-    bottom: 0;
-    width: 2px;
     height: 100%;
-    background: var(--el-color-primary);
-    border-radius: 2px;
+    opacity: 1;
   }
 }
 </style>

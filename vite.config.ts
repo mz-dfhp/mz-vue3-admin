@@ -33,6 +33,7 @@ export default ({ mode, command }) => {
         resolvers: [ElementPlusResolver()]
       }),
       Components({
+        include: [/\.vue$/, /\.vue\?vue/, /\.vue\?v=/, /\.[jt]sx$/],
         resolvers: [ElementPlusResolver()]
       }),
       VueSetupExtend(),
