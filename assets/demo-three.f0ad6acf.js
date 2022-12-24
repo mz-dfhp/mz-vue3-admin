@@ -1,1 +1,0 @@
-import{_ as e}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as r,f as t}from"./index.349572a6.js";const o={},c={name:"iframeName",class:"w-100% h-80vh b-none",src:"https://cn.vuejs.org/guide/quick-start.html"};function s(n,a){return r(),t("iframe",c)}const f=e(o,[["render",s]]);export{f as default};
