@@ -1,4 +1,4 @@
-<script setup lang="ts" name="Keep-one-info">
+<script setup lang="ts" name="Keep-one">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { keepAliveStore } from '@/stores/modules/keepAlive'
