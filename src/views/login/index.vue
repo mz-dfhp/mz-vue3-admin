@@ -58,6 +58,7 @@ import { useRouter } from 'vue-router'
 import { userStore } from '@/stores/modules/user'
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
+import { loginIn } from '@/api'
 const rules = reactive<FormRules>({
   userName: [
     {
@@ -88,7 +89,8 @@ const submitForm = async (role: string) => {
     (loading.value = true))
   await FormRef?.value?.validate(async (valid: boolean, fields: any) => {
     if (valid) {
-      await userStore().setToken(role)
+      const token = await loginIn(role)
+      await userStore().setToken(token)
       loading.value = false
       router.replace({
         path: '/'

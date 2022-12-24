@@ -21,7 +21,7 @@
 import { watch, ref, onMounted } from 'vue'
 import { useRouter, useRoute, RouteLocationNormalizedLoaded } from 'vue-router'
 import { RouteItem, tabsStore } from '@/stores/modules/tabs'
-import { PageEnum } from '@/enmus/pageEnums'
+import { PageEnum } from '@/enmus'
 
 const routerInstance = useRouter()
 const routeInstance = useRoute()

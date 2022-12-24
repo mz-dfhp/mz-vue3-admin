@@ -5,7 +5,7 @@
   </div>
 </template>
 <script setup lang="ts" name="Page403">
-import { PageEnum } from '@/enmus/pageEnums'
+import { PageEnum } from '@/enmus'
 import { useRouter } from 'vue-router'
 const useRouterInstance = useRouter()
 
