@@ -89,9 +89,10 @@ const handleEchars = throttle(() => {
 </script>
 <style lang="scss" scoped>
 [class*='el-col-'] {
-  padding-bottom: 6px !important;
   padding-top: 6px;
+  padding-bottom: 6px !important;
 }
+
 :deep(.el-card) {
   border: none;
 }

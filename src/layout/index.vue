@@ -34,9 +34,11 @@ const { expansion } = useExpansion()
 <style scoped lang="scss" name="layout">
 .common-layout {
   min-height: 100%;
+
   .common-main {
     background: $mainColor;
   }
+
   /* .aside-modal {
   }
   @media screen and (max-width: 440px) {
