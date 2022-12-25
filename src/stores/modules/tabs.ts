@@ -32,17 +32,13 @@ export const tabsStore = defineStore(pid, {
       if (flag) return
       this.tabList.push(route)
     },
-    closeLeftTabs(route: RouteItem): void {
-      const index: number = this.tabList.findIndex(
-        (item) => item.name === route.name
-      )
-      this.tabList.splice(0, index)
+    closeLeftTabs(name: string): void {
+      const index: number = this.tabList.findIndex((item) => item.name === name)
+      index !== -1 && this.tabList.splice(1, index - 1)
     },
-    closeRightTabs(route: RouteItem): void {
-      const index: number = this.tabList.findIndex(
-        (item) => item.name === route.name
-      )
-      this.tabList.splice(index + 1)
+    closeRightTabs(name: string): void {
+      const index: number = this.tabList.findIndex((item) => item.name === name)
+      index !== -1 && this.tabList.splice(index + 1)
     },
     closeCurrentTabs(routeName: string): void {
       const index: number = this.tabList.findIndex(
@@ -50,13 +46,13 @@ export const tabsStore = defineStore(pid, {
       )
       this.tabList.splice(index, 1)
     },
-    closeOtherTabs(route: RouteItem): void {
+    closeOtherTabs(name: string): void {
       this.tabList = this.tabList.filter(
-        (item) => item.name === route.name || item.meta.hide
+        (item, index) => item.name === name || index === 0
       )
     },
     closeAllTabs() {
-      this.tabList = []
+      this.tabList.splice(1)
     }
   },
   persist: {

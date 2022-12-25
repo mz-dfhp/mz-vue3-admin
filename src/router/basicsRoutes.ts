@@ -26,5 +26,13 @@ export const errorRoutes: Array<RouteRecordRaw> = [
     meta: {
       title: '403'
     }
+  },
+  {
+    path: '/redirect/:path(.*)',
+    name: 'Redirect',
+    component: () => import('@/views/redirect/index'),
+    meta: {
+      title: '刷新'
+    }
   }
 ]
