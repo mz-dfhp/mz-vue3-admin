@@ -1,0 +1,1 @@
+import{m as n,u as a,n as u,q as c}from"./index.17d56c41.js";const m={setup(){const e=n(),s=a();return u(()=>{const{params:o,query:r}=e,{path:t}=o;s.replace({path:"/"+(Array.isArray(t)?t.join("/"):t),query:r})}),()=>`<${c}/>`}};export{m as default};

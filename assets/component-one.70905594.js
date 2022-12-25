@@ -1,1 +1,0 @@
-import{d as o,o as u,f as c,h as r,w as p,j as _,c as l,u as m}from"./index.61c2d038.js";/* empty css                  */const d=o({name:"component-one"}),h=o({...d,setup(f){const n=m(),s=t=>{t===1&&n.push({path:"/"})};return(t,e)=>{const a=l;return u(),c("div",null,[r(a,{onClick:e[0]||(e[0]=i=>s(1))},{default:p(()=>[_("\u53BB\u9996\u9875")]),_:1})])}}});export{h as default};
