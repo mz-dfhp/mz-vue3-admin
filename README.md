@@ -30,6 +30,9 @@ cd mz-vue3-admin
 # 安装依赖
 pnpm install
 
+# 解决windows换行crlf与lf冲突
+pnpm lint
+
 # 运行项目
 pnpm dev
 
