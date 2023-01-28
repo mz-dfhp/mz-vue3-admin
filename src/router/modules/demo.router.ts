@@ -41,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
         name: `${routeName}-four`,
         component: () => import('@/views/demo/demo-four.vue'),
         meta: {
-          title: '手写mini-qiankun'
+          title: 'demo'
         }
       },
       {

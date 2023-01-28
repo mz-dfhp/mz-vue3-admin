@@ -10,7 +10,7 @@
       >
         <el-tab-pane
           :closable="isClosable(item.path)"
-          v-for="item in tabsList"
+          v-for="item in tabList"
           :key="item.name"
           :label="item.meta.title"
           :name="item.name"
@@ -20,9 +20,7 @@
     <el-dropdown @command="handleCommand">
       <div
         class="w-50px i-zondicons-view-tile text-16px cursor-pointer flex-shrink-0"
-      >
-        占位符
-      </div>
+      ></div>
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item
@@ -42,7 +40,7 @@
   </div>
 </template>
 <script lang="ts" setup name="AppTabs">
-import { watch, ref, onMounted } from 'vue'
+import { watch, ref, onMounted, computed } from 'vue'
 import { useRouter, useRoute, RouteLocationNormalizedLoaded } from 'vue-router'
 import { RouteItem, tabsStore } from '@/stores/modules/tabs'
 import { PageEnum } from '@/enmus'
@@ -51,7 +49,7 @@ const routerInstance = useRouter()
 const routeInstance = useRoute()
 const tabsStoreInstance = tabsStore()
 const activeTab = ref(routeInstance.name)
-const tabsList = tabsStoreInstance.getTabList
+const tabList = computed(() => tabsStoreInstance.getTabList)
 const isClosable = (path: string) => path !== PageEnum.ROOT_INDEX
 onMounted(() => {
   const findRoot = routerInstance
@@ -79,19 +77,19 @@ watch(
 
 const tabClick = (e: { props: { name: string } }) => {
   const { name } = e.props
-  const route = tabsList.find((item) => item.name === name)
+  const route = tabList.value.find((item) => item.name === name)
   routerInstance.push({
     ...route
   })
 }
 const removeTab = (name: string) => {
-  let index = tabsList.findIndex((item) => item.name === name)
+  let index = tabList.value.findIndex((item) => item.name === name)
   tabsStoreInstance.closeCurrentTabs(name)
-  let length = tabsList.length
+  let length = tabList.value.length
   let skipIndex = length === index ? index - 1 : index
   name === activeTab.value &&
     routerInstance.replace({
-      name: tabsList[skipIndex].name
+      name: tabList.value[skipIndex].name
     })
 }
 const addTabs = (routeInstance: RouteLocationNormalizedLoaded) => {
@@ -119,20 +117,22 @@ const operateList: Array<{
   { id: 6, title: '关闭全部', icon: 'i-zondicons-close' }
 ]
 const operateDisabled = (e: number) => {
-  let findIndex = tabsList.findIndex((item) => item.name === routeInstance.name)
+  let findIndex = tabList.value.findIndex(
+    (item) => item.name === routeInstance.name
+  )
   switch (e) {
     case 1:
       return false
     case 2:
       return PageEnum.ROOT_INDEX === routeInstance.fullPath
     case 3:
-      return tabsList.length < 2
+      return tabList.value.length === 2
     case 4:
       return !(findIndex > 1)
     case 5:
-      return !(tabsList.length > findIndex + 1)
+      return !(tabList.value.length > findIndex + 1)
     case 6:
-      return tabsList.length <= 1
+      return tabList.value.length <= 1
     default:
       return false
   }

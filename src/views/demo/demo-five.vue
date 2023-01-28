@@ -92,7 +92,7 @@ const drag = ref<boolean>(false)
       @end="drag = false"
     >
       <template #item="{ element }">
-        <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1" class="cursor-move">
+        <el-col :xs="8" :sm="6" :md="4" class="cursor-move">
           <el-card shadow="hover">
             <div class="flex-center flex-col">
               <div

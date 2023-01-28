@@ -3,13 +3,13 @@
 <template>
   <div>
     <el-card shadow="hover">
-      <el-button type="danger">插件实现中...</el-button>
+      <el-button type="danger">demo</el-button>
     </el-card>
     <br />
     <el-card shadow="hover">
       <template #header>
         <div class="card-header">
-          <el-button type="primary">子应用react</el-button>
+          <el-button type="primary">demo</el-button>
         </div>
       </template>
       <div class="h-40vh"></div>
