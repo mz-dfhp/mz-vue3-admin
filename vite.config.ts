@@ -54,8 +54,34 @@ export default ({ mode, command }) => {
     },
     server: {
       open: true,
-      port: 8080
+      port: 8080,
+      host: '0.0.0.0',
+      cors: true,
+      // 跨域代理配置
+      proxy: {
+        '/api': {
+          target: 'https://www.baidu.com/',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        }
+      }
     },
-    build: {}
+    // * 打包去除 console.log && debugger
+    esbuild: {
+      pure: ['console.log', 'debugger']
+    },
+    build: {
+      outDir: 'dist',
+      minify: 'esbuild',
+      chunkSizeWarningLimit: 1500,
+      rollupOptions: {
+        output: {
+          // Static resource classification and packaging
+          chunkFileNames: 'assets/js/[name]-[hash].js',
+          entryFileNames: 'assets/js/[name]-[hash].js',
+          assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
+        }
+      }
+    }
   })
 }

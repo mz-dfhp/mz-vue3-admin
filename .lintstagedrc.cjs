@@ -1,10 +1,20 @@
 module.exports = {
-  'src/**/*.{js,jsx,ts,tsx}': 'eslint --cache --fix',
-  'src/**/*.{css,scss}': 'stylelint --cache --fix --allow-empty-input',
-  'src/**/*.vue': [
-    'eslint --cache --fix',
-    'stylelint --cache --fix --allow-empty-input'
-  ]
+  '*.{js,jsx,ts,tsx}': [
+    'eslint --fix --cache --cache-location node_modules/.cache/eslint/',
+    'prettier --write --cache'
+  ],
+  '{!(package)*.json,*.code-snippets,.!(browserslist)*rc}': [
+    'prettier --write--parser json --cache'
+  ],
+  'package.json': ['prettier --write --cache'],
+  '*.vue': [
+    'eslint --fix --cache-location node_modules/.cache/eslint/',
+    'prettier --write --cache ',
+    'stylelint --fix --allow-empty-input --cache --cache-location node_modules/.cache/stylelint/'
+  ],
+  '*.{scss,less,styl,html}': [
+    'stylelint --fix --allow-empty-input --cache --cache-location node_modules/.cache/stylelint/',
+    'prettier --write --cache'
+  ],
+  '*.md': ['prettier --write --cache']
 }
-
-// --allow-empty-input 参数防止意外提交卡顿。
