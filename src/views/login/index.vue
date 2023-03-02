@@ -87,7 +87,7 @@ const submitForm = async (role: string) => {
     ((loginForm.userName = role),
     (loginForm.passWord = role),
     (loading.value = true))
-  await FormRef?.value?.validate(async (valid: boolean, fields: any) => {
+  await FormRef?.value?.validate(async (valid: boolean) => {
     if (valid) {
       const token = await loginIn(role)
       await userStore().setToken(token)
@@ -97,7 +97,6 @@ const submitForm = async (role: string) => {
       })
     } else {
       loading.value = false
-      console.log('error submit!', fields)
     }
   })
 }

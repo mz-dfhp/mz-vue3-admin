@@ -48,7 +48,7 @@ import { PageEnum } from '@/enmus'
 const routerInstance = useRouter()
 const routeInstance = useRoute()
 const tabsStoreInstance = tabsStore()
-const activeTab = ref(routeInstance.name)
+const activeTab = ref<any>(routeInstance.name)
 const tabList = computed(() => tabsStoreInstance.getTabList)
 const isClosable = (path: string) => path !== PageEnum.ROOT_INDEX
 onMounted(() => {
@@ -75,14 +75,14 @@ watch(
   }
 )
 
-const tabClick = (e: { props: { name: string } }) => {
+const tabClick: any = (e: { props: { name: string } }) => {
   const { name } = e.props
   const route = tabList.value.find((item) => item.name === name)
   routerInstance.push({
     ...route
   })
 }
-const removeTab = (name: string) => {
+const removeTab: any = (name: string) => {
   let index = tabList.value.findIndex((item) => item.name === name)
   tabsStoreInstance.closeCurrentTabs(name)
   let length = tabList.value.length

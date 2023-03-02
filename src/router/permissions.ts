@@ -18,7 +18,6 @@ export function createRouterPermissions(router: Router) {
     // 如果有token
     if (token) {
       if (to.path === '/login') {
-        console.log('还要进登录')
         next({
           path: '/index'
         })
@@ -30,9 +29,7 @@ export function createRouterPermissions(router: Router) {
         next()
       }
     } else {
-      console.log('无token')
       if (to.path !== '/login') {
-        console.log('无token 进其他页面')
         return next({
           path: '/login',
           replace: true

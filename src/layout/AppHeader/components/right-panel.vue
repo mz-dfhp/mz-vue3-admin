@@ -25,7 +25,7 @@
       ></div>
       <el-switch
         :model-value="dark"
-        @change="(e: boolean) => setDark(e)"
+        @change="(e: string | number | boolean) => setDark(e as boolean)"
         inline-prompt
         :active-icon="vnode1"
         :inactive-icon="vnode2"
