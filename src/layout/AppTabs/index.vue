@@ -182,7 +182,9 @@ const handleCommand = (e: number) => {
           border: none !important;
 
           .el-tabs__item {
+            min-width: 100px;
             margin-left: -10px;
+            text-align: center;
             border: none !important;
 
             &:hover {
