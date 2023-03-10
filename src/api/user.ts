@@ -1,7 +1,6 @@
 import { UserInfo } from '@/interface'
-import asyncRoutes from '@/router/asyncRoutes'
+import { asyncRoutes } from '@/router/asyncRoutes'
 import { formatteRoutes } from '@/utils/route'
-import request from '@/service/index'
 
 export function getUserInfo(role: string) {
   return new Promise<UserInfo>((resolve) => {
@@ -37,11 +36,4 @@ export function loginIn(token: string) {
 export function loginOut() {
   window.localStorage.clear()
   window.location.reload()
-}
-
-export function demo(params: object) {
-  return request<{ username: string }>({
-    url: '/adminUser/userInfo',
-    params
-  })
 }

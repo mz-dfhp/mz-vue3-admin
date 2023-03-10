@@ -5,11 +5,10 @@
         <AppLogo :expansion="expansion" />
         <AppMenu :expansion="expansion" />
       </el-aside>
-      <!-- <div
-        class="fixed bottom-0 right-0 left-0 top-0 z-10 bg-#000000 bg-opacity-80"
-      ></div> -->
       <el-container>
-        <el-header><AppHeader /></el-header>
+        <el-header>
+          <AppHeader />
+        </el-header>
         <AppTabs />
         <el-main class="common-main">
           <div class="wapper min-h-100% min-w-100%">
@@ -38,21 +37,5 @@ const { expansion } = useExpansion()
   .common-main {
     background: $mainColor;
   }
-
-  /* .aside-modal {
-  }
-  @media screen and (max-width: 440px) {
-    .common-aside {
-      position: fixed;
-      left: 0;
-      top: 0;
-      background: #fff;
-      z-index: 11;
-      height: 100vh;
-      .common-menu:not(.el-menu--collapse) {
-        width: 80vw !important;
-      }
-    }
-  } */
 }
 </style>
