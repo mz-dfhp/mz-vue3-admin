@@ -9,7 +9,7 @@ export function getUserInfo(role: string) {
   function getRole(role: string): UserInfo {
     let filterPath: string[] = []
     if (role !== 'admin') {
-      filterPath = ['/component']
+      filterPath = ['component']
     }
     const userInfo = {
       name: 'mz',
