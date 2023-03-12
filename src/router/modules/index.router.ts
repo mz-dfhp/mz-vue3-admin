@@ -6,7 +6,8 @@ const routes: RouteRecordRaw = {
   name: `${routeName}`,
   component: () => import('@/views/index/index.vue'),
   meta: {
-    title: '工作台'
+    title: '工作台',
+    icon: 'i-zondicons-text-box'
   }
 }
 

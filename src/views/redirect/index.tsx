@@ -9,6 +9,7 @@ export default {
     onBeforeMount(() => {
       const { params, query } = routeInstance
       const { path } = params
+      debugger
       routerInstance.replace({
         path: '/' + (Array.isArray(path) ? path.join('/') : path),
         query

@@ -1,6 +1,9 @@
 <template>
   <Teleport to="body">
-    <div position="fixed" class="right-0 top-50% translate-y--50% p10px">
+    <div
+      position="fixed"
+      class="right-0 top-50% translate-y--50% p10px setting-box rounded-l-xl"
+    >
       <div
         @click="showSetting"
         class="hover-animate-spin i-zondicons-cog h-25px w-25px cursor-pointer"
@@ -24,8 +27,8 @@
     <!-- <el-divider> 动画 </el-divider> -->
     <template #footer>
       <div style="flex: auto">
-        <el-button @click="show = false">cancel</el-button>
-        <el-button type="primary" @click="confirmClick">confirm</el-button>
+        <el-button @click="show = false">取消</el-button>
+        <el-button type="primary" @click="confirmClick">确定</el-button>
       </div>
     </template>
   </el-drawer>
@@ -67,4 +70,8 @@ watch(show, (e) => {
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.setting-box {
+  background: var(--el-color-primary-light-3);
+}
+</style>

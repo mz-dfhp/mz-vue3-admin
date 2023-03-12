@@ -4,8 +4,8 @@
       <el-sub-menu :index="item.name" :key="item.name">
         <template #title>
           <div
-            :class="icon ? 'i-zondicons-view-tile' : ''"
-            class="menu-icon-box flex items-center justify-center p-x-5px"
+            :class="item.icon ? 'i-zondicons-view-tile' : ''"
+            class="p-x-5px"
           ></div>
           <span>{{ item.title }}</span>
         </template>
@@ -14,6 +14,10 @@
     </template>
     <template v-else>
       <el-menu-item :index="item.name" :key="item.name" @click="menuItemClick">
+        <div
+          class="p-x-5px"
+          :class="item.icon ? 'i-zondicons-view-tile' : ''"
+        ></div>
         <span>{{ item.title }}</span>
       </el-menu-item>
     </template>
@@ -25,7 +29,6 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 interface IProps {
   menuList: Array<IPermissionList>
-  icon?: boolean
 }
 const props = withDefaults(defineProps<IProps>(), {
   menuList: () => []

@@ -126,7 +126,7 @@ const operateDisabled = (e: number) => {
     case 2:
       return PageEnum.ROOT_INDEX === routeInstance.fullPath
     case 3:
-      return tabList.value.length === 2
+      return tabList.value.length === 2 || tabList.value.length === 1
     case 4:
       return !(findIndex > 1)
     case 5:
@@ -141,7 +141,9 @@ const handleCommand = (e: number) => {
   switch (e) {
     case 1:
       routerInstance.push({
-        path: PageEnum.ROOT_Redirect + routeInstance.fullPath
+        path: PageEnum.ROOT_Redirect + routeInstance.fullPath,
+        query: routeInstance.query,
+        params: routeInstance.params
       })
       break
     case 2:
