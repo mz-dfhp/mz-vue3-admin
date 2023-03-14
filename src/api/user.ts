@@ -1,5 +1,5 @@
 import { UserInfo } from '@/interface'
-import { asyncRoutes } from '@/router/asyncRoutes'
+import asyncRoutes from '@/router/asyncRoutes'
 import { formatteRoutes } from '@/utils/route'
 
 export function getUserInfo(role: string) {
@@ -9,7 +9,7 @@ export function getUserInfo(role: string) {
   function getRole(role: string): UserInfo {
     let filterPath: string[] = []
     if (role !== 'admin') {
-      filterPath = ['component']
+      filterPath = ['/component']
     }
     const userInfo = {
       name: 'mz',

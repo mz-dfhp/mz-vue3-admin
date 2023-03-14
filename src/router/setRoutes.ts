@@ -1,5 +1,5 @@
 import router from '@/router'
-import { asyncRoutes, layoutRoutes } from './asyncRoutes'
+import asyncRoutes from './asyncRoutes'
 import { routeStoreWithout } from '@/stores/modules/route'
 import { menuStoreWithout } from '@/stores/modules/menu'
 import { userStoreWithout } from '@/stores/modules/user'
@@ -14,11 +14,11 @@ export async function setAsyncRoutes() {
   const userInfo = await getUserInfo(userStoreInstance.getToken)
   // 保存用户信息
   await userStoreInstance.setUserInfo(userInfo)
-  // 先对路由进行对比 过滤无权限的路由 过滤路由后扁平化路由 处理二级以上 keep-alive
+  // 先对路由进行对比 过滤无权限的路由
   const result = await diffRouterList([...asyncRoutes], userInfo.permission)
+  // 过滤路由后扁平化路由 处理二级以上 keep-alive
   // 生成用来注册路由
-  layoutRoutes.children = [...result]
-  await routeStoreInstance.setRoutes([layoutRoutes, ...errorRoutes])
+  await routeStoreInstance.setRoutes([...errorRoutes, ...result])
   // 生成左侧菜单栏
   await menuStoreInstance.setMenus(userInfo.permission)
   //处理完addRoute

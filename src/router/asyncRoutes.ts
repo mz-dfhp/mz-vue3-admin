@@ -1,32 +1,15 @@
 import { RouteRecordRaw } from 'vue-router'
-
-const layout = () => import('@/layout/index.vue')
-
 const modules = import.meta.glob('./modules/*.router.ts', {
   import: 'default',
   eager: true
 })
-
-/**
- * 动态路由layout
- */
-export const layoutRoutes: RouteRecordRaw = {
-  path: '/',
-  component: layout,
-  meta: {
-    title: '首页'
-  },
-  redirect: '/index',
-  children: []
-}
-
-let modulesRoutes: RouteRecordRaw[] = []
-
+let modulesRoutes: Array<RouteRecordRaw> = []
 Object.keys(modules).forEach((item) => {
-  modulesRoutes = modulesRoutes.concat(modules[item] as RouteRecordRaw[])
+  modulesRoutes = modulesRoutes.concat(modules[item] as Array<RouteRecordRaw>)
+  // modules[item]().then((mod) => {
+  //   modulesRoutes = modulesRoutes.concat(mod as Array<RouteRecordRaw>)
+  // })
 })
+const asyncRoutes: Array<RouteRecordRaw> = modulesRoutes
 
-/**
- * 动态路由
- */
-export const asyncRoutes: RouteRecordRaw[] = modulesRoutes
+export default asyncRoutes
