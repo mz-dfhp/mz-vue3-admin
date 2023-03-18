@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: 'Demo',
       sort: 2,
-      icon: 'i-zondicons-view-tile'
+      icon: 'i-bi:grid'
     },
     children: [
       {
@@ -42,14 +42,6 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/demo/demo-four.vue'),
         meta: {
           title: 'demo'
-        }
-      },
-      {
-        path: 'demo-five',
-        name: `${routeName}-five`,
-        component: () => import('@/views/demo/demo-five.vue'),
-        meta: {
-          title: '拖拽'
         }
       }
     ]

@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: '缓存Keep',
       sort: 3,
-      icon: 'i-zondicons-text-box'
+      icon: 'i-bi:grid'
     },
     children: [
       {

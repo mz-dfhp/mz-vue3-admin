@@ -3,10 +3,7 @@
     <template v-if="item.children">
       <el-sub-menu :index="item.name" :key="item.name">
         <template #title>
-          <div
-            :class="item.icon ? 'i-zondicons-view-tile' : ''"
-            class="p-x-5px"
-          ></div>
+          <div :class="item.icon ? 'i-bi:grid' : ''" class="p-x-5px"></div>
           <span>{{ item.title }}</span>
         </template>
         <AppMenuItem :menuList="item.children" />
@@ -14,10 +11,7 @@
     </template>
     <template v-else>
       <el-menu-item :index="item.name" :key="item.name" @click="menuItemClick">
-        <div
-          class="p-x-5px"
-          :class="item.icon ? 'i-zondicons-view-tile' : ''"
-        ></div>
+        <div class="p-x-5px" :class="item.icon ? 'i-bi:grid' : ''"></div>
         <span>{{ item.title }}</span>
       </el-menu-item>
     </template>

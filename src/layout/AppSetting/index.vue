@@ -6,7 +6,7 @@
     >
       <div
         @click="showSetting"
-        class="hover-animate-spin i-zondicons-cog h-25px w-25px cursor-pointer bg-white"
+        class="hover-animate-spin i-bi:gear-fill h-25px w-25px cursor-pointer bg-white"
       ></div>
     </div>
   </Teleport>

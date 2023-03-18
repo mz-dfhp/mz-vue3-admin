@@ -19,7 +19,10 @@
     </div>
     <el-dropdown @command="handleCommand">
       <div
-        class="w-50px i-zondicons-view-tile text-16px cursor-pointer flex-shrink-0"
+        hover-scale-120
+        hover-rotate-90
+        transition-all
+        class="w-50px i-bi:grid-fill text-16px cursor-pointer flex-shrink-0"
       ></div>
       <template #dropdown>
         <el-dropdown-menu>
@@ -44,7 +47,9 @@ import { watch, ref, onMounted, computed } from 'vue'
 import { useRouter, useRoute, RouteLocationNormalizedLoaded } from 'vue-router'
 import { RouteItem, tabsStore } from '@/stores/modules/tabs'
 import { PageEnum } from '@/enmus'
-import { useTabName } from '@/hooks'
+import { useTabName, useRefresh } from '@/hooks'
+
+const { refresh } = useRefresh()
 const { tabName } = useTabName()
 const routerInstance = useRouter()
 const routeInstance = useRoute()
@@ -109,13 +114,13 @@ const operateList: Array<{
   {
     id: 1,
     title: '刷新当前',
-    icon: 'i-zondicons-reload'
+    icon: 'i-bi-arrow-repeat'
   },
-  { id: 2, title: '关闭当前', icon: 'i-zondicons-close' },
-  { id: 3, title: '关闭其他', icon: 'i-zondicons-close' },
-  { id: 4, title: '关闭左侧', icon: 'i-zondicons-cheveron-outline-left' },
-  { id: 5, title: '关闭右侧', icon: 'i-zondicons-cheveron-outline-right' },
-  { id: 6, title: '关闭全部', icon: 'i-zondicons-close' }
+  { id: 2, title: '关闭当前', icon: 'i-bi:x-lg' },
+  { id: 3, title: '关闭其他', icon: 'i-bi:x-lg' },
+  { id: 4, title: '关闭左侧', icon: 'i-bi:arrow-left-circle' },
+  { id: 5, title: '关闭右侧', icon: 'i-bi:arrow-right-circle' },
+  { id: 6, title: '关闭全部', icon: 'i-bi:x-lg' }
 ]
 const operateDisabled = (e: number) => {
   let findIndex = tabList.value.findIndex(
@@ -141,11 +146,7 @@ const operateDisabled = (e: number) => {
 const handleCommand = (e: number) => {
   switch (e) {
     case 1:
-      routerInstance.push({
-        path: PageEnum.ROOT_Redirect + routeInstance.fullPath,
-        query: routeInstance.query,
-        params: routeInstance.params
-      })
+      refresh()
       break
     case 2:
       removeTab(routeInstance.name as string)

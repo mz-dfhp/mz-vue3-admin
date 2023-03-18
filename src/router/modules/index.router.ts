@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: '首页',
       sort: 1,
-      icon: 'i-zondicons-view-tile'
+      icon: 'i-bi:grid'
     },
     redirect: '/index',
     children: [

@@ -3,7 +3,7 @@ export default defineComponent({
   props: {
     className: {
       type: String,
-      default: 'i-zondicons-brightness-up'
+      default: 'i-bi:grid'
     }
   },
   name: 'BaseIcon',

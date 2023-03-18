@@ -3,9 +3,7 @@
     <div @click="setExpansion(!expansion)" class="mr20px">
       <div
         cursor-pointer
-        :class="
-          expansion ? 'i-zondicons-align-left' : 'i-zondicons-align-right'
-        "
+        :class="expansion ? 'i-bi:text-left' : 'i-bi:text-right'"
       ></div>
     </div>
     <BreadBox />
