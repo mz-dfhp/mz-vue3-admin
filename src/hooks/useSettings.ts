@@ -2,7 +2,7 @@ import { computed } from 'vue'
 import { settingStore } from '@/stores/modules/setting'
 
 /**
- * 修改暗黑模式
+ * 暗黑模式
  * @returns
  */
 export function useDark() {
@@ -16,7 +16,7 @@ export function useDark() {
 }
 
 /**
- * 修改主题色
+ * 主题色
  * @returns
  */
 export function useThemeColor() {
@@ -45,7 +45,7 @@ export function useThemeColor() {
 }
 
 /**
- * 修改侧边栏展开
+ * 侧边栏展开
  * @returns
  */
 export function useExpansion() {
@@ -55,4 +55,17 @@ export function useExpansion() {
     settingStoreInstance.setExpansion(flag)
   }
   return { expansion, setExpansion }
+}
+
+/**
+ * 动画
+ * @returns
+ */
+export function useTransitionName() {
+  const settingStoreInstance = settingStore()
+  const transitionName = computed(() => settingStoreInstance.getTransitionName)
+  function setTransitionName(flag: string) {
+    settingStoreInstance.setTransitionName(flag)
+  }
+  return { transitionName, setTransitionName }
 }

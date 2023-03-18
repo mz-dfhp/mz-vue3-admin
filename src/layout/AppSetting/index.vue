@@ -2,11 +2,11 @@
   <Teleport to="body">
     <div
       position="fixed"
-      class="right-0 top-50% translate-y--50% p10px setting-box rounded-l-xl"
+      class="right-0 top-50% translate-y--50% p10px bg-[var(--el-color-primary-light-3)] rounded-l-xl"
     >
       <div
         @click="showSetting"
-        class="hover-animate-spin i-zondicons-cog h-25px w-25px cursor-pointer"
+        class="hover-animate-spin i-zondicons-cog h-25px w-25px cursor-pointer bg-white"
       ></div>
     </div>
   </Teleport>
@@ -16,15 +16,31 @@
     :size="settingWidth"
     title="项目配置"
   >
-    <el-divider>
-      <div>主题色</div>
-      <el-color-picker
-        color-format="rgb"
-        v-model="settingInfo.color"
-        :predefine="predefineColors"
-      />
-    </el-divider>
-    <!-- <el-divider> 动画 </el-divider> -->
+    <el-form label-position="top">
+      <el-form-item label="主题色">
+        <el-color-picker
+          color-format="rgb"
+          v-model="settingState.color"
+          :predefine="predefineColors"
+        />
+      </el-form-item>
+      <el-form-item label="切换动画">
+        <el-select
+          v-model="settingState.transitionName"
+          class="m-2"
+          placeholder="Select"
+          size="large"
+        >
+          <el-option
+            v-for="item in transitionList"
+            :key="item.name"
+            :label="item.title"
+            :value="item.name"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="标签风格"> 2 </el-form-item>
+    </el-form>
     <template #footer>
       <div style="flex: auto">
         <el-button @click="show = false">取消</el-button>
@@ -35,7 +51,7 @@
 </template>
 
 <script setup lang="ts" name="AppSetting">
-import { useThemeColor } from '@/hooks'
+import { useThemeColor, useTransitionName } from '@/hooks'
 import { ref, reactive, watch, computed } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 
@@ -43,11 +59,13 @@ const { width } = useWindowSize()
 const settingWidth = computed(() => (width.value < 600 ? '80%' : '400px'))
 
 const { themeColor, setThemeColor } = useThemeColor()
+const { transitionName, setTransitionName } = useTransitionName()
 const show = ref<boolean>(false)
 const showSetting = () => {
   show.value = true
 }
-const predefineColors = ref([
+
+const predefineColors = [
   '#ff4500',
   '#ff8c00',
   '#ffd700',
@@ -55,23 +73,35 @@ const predefineColors = ref([
   '#00ced1',
   '#1e90ff',
   '#c71585'
-])
-let settingInfo = reactive({
-  color: themeColor.value
+]
+const transitionList = [
+  {
+    name: 'fade',
+    title: '淡出'
+  },
+  {
+    name: 'slide-fade',
+    title: '幻灯片'
+  },
+  {
+    name: 'zoom',
+    title: '缩放'
+  }
+]
+let settingState = reactive({
+  color: themeColor.value,
+  transitionName: transitionName.value
 })
 
 const confirmClick = () => {
-  setThemeColor(settingInfo.color)
+  settingState.color && setThemeColor(settingState.color)
+  settingState.transitionName && setTransitionName(settingState.transitionName)
   show.value = false
 }
 watch(show, (e) => {
   if (!e) return
-  settingInfo.color = themeColor.value
+  settingState.color = themeColor.value
 })
 </script>
 
-<style lang="scss" scoped>
-.setting-box {
-  background: var(--el-color-primary-light-3);
-}
-</style>
+<style lang="scss" scoped></style>

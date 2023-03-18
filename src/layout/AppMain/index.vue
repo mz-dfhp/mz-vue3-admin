@@ -1,6 +1,6 @@
 <template>
   <router-view v-slot="{ Component, route }">
-    <transition mode="out-in" appear>
+    <transition mode="out-in" appear :name="transitionName">
       <keep-alive :include="keepList">
         <component :is="Component" :key="route.fullPath" />
       </keep-alive>
@@ -10,20 +10,13 @@
 
 <script setup lang="ts" name="AppMain">
 import { keepAliveStore } from '@/stores/modules/keepAlive'
+import { settingStore } from '@/stores/modules/setting'
 import { computed } from 'vue'
 const keepAliveInstance = keepAliveStore()
+const settingStoreInstance = settingStore()
 
 const keepList = computed(() => keepAliveInstance.getkeepAlive)
+const transitionName = computed(() => settingStoreInstance.getTransitionName)
 </script>
 
-<style scoped lang="scss">
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-</style>
+<style scoped lang="scss"></style>

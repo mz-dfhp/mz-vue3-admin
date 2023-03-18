@@ -12,7 +12,7 @@
     "lint": "npm run lint:eslint & npm run lint:stylelint & npm run lint:prettier",
     "lint:eslint": "eslint --fix ./src/**/*.{js,jsx,ts,tsx,vue} --cache --cache-location node_modules/.cache/eslint/",
     "lint:stylelint": "stylelint --fix ./src/**/*.{css,scss,vue} --cache --cache-location node_modules/.cache/stylelint/",
-		"lint:prettier": "prettier --write ./src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md} --loglevel warn --cache",
+    "lint:prettier": "prettier --write ./src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md} --loglevel warn --cache",
     "lint:lint-staged": "lint-staged",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install"

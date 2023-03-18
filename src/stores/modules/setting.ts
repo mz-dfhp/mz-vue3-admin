@@ -1,20 +1,22 @@
 import { defineStore } from 'pinia'
 import store from '@/stores'
 
-export interface ISettingList {
+export interface ISettings {
   expansion: boolean
   themeColor: string
   appDark: boolean
+  transitionName: string
 }
 const pid = 'STORE__SETTING'
 export const settingStore = defineStore(pid, {
-  state: (): ISettingList => ({
+  state: (): ISettings => ({
     expansion: false, //控制展开
     themeColor: 'rgb(64,158,255)', // 主题色
-    appDark: false //暗黑模式
+    appDark: false, //暗黑模式
+    transitionName: 'slide-fade' // 动画
   }),
   getters: {
-    getExpansion(state: ISettingList) {
+    getExpansion(state: ISettings) {
       return state.expansion
     },
     getThemeColor(state) {
@@ -22,6 +24,9 @@ export const settingStore = defineStore(pid, {
     },
     getAppDark(state) {
       return state.appDark
+    },
+    getTransitionName(state) {
+      return state.transitionName
     }
   },
   actions: {
@@ -33,11 +38,14 @@ export const settingStore = defineStore(pid, {
     },
     setAppDark(dark: boolean) {
       this.appDark = dark
+    },
+    setTransitionName(name: string) {
+      this.transitionName = name
     }
   },
   persist: {
     storage: localStorage,
-    paths: ['appDark', 'themeColor']
+    paths: ['expansion', 'themeColor', 'appDark', 'transitionName']
   }
 })
 

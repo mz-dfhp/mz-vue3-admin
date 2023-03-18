@@ -49,7 +49,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name-="App-index">
+<script setup lang="ts" name="Index">
 import { showOne, showTwo } from './options'
 import { onMounted, reactive, ref, onUnmounted, watch, Ref } from 'vue'
 import { throttle } from 'lodash-es'
