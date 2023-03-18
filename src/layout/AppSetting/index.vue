@@ -25,12 +25,7 @@
         />
       </el-form-item>
       <el-form-item label="切换动画">
-        <el-select
-          v-model="settingState.transitionName"
-          class="m-2"
-          placeholder="Select"
-          size="large"
-        >
+        <el-select v-model="settingState.transitionName" placeholder="请选择">
           <el-option
             v-for="item in transitionList"
             :key="item.name"
@@ -39,7 +34,16 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="标签风格"> 2 </el-form-item>
+      <el-form-item label="标签风格">
+        <el-select v-model="settingState.tabName" placeholder="请选择">
+          <el-option
+            v-for="item in tabList"
+            :key="item.name"
+            :label="item.title"
+            :value="item.name"
+          />
+        </el-select>
+      </el-form-item>
     </el-form>
     <template #footer>
       <div style="flex: auto">
@@ -51,7 +55,7 @@
 </template>
 
 <script setup lang="ts" name="AppSetting">
-import { useThemeColor, useTransitionName } from '@/hooks'
+import { useThemeColor, useTransitionName, useTabName } from '@/hooks'
 import { ref, reactive, watch, computed } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 
@@ -60,6 +64,7 @@ const settingWidth = computed(() => (width.value < 600 ? '80%' : '400px'))
 
 const { themeColor, setThemeColor } = useThemeColor()
 const { transitionName, setTransitionName } = useTransitionName()
+const { tabName, setTabName } = useTabName()
 const show = ref<boolean>(false)
 const showSetting = () => {
   show.value = true
@@ -88,14 +93,26 @@ const transitionList = [
     title: '缩放'
   }
 ]
+const tabList = [
+  {
+    name: 'card',
+    title: '卡片'
+  },
+  {
+    name: 'etherealize',
+    title: '灵动'
+  }
+]
 let settingState = reactive({
   color: themeColor.value,
-  transitionName: transitionName.value
+  transitionName: transitionName.value,
+  tabName: tabName.value
 })
 
 const confirmClick = () => {
   settingState.color && setThemeColor(settingState.color)
   settingState.transitionName && setTransitionName(settingState.transitionName)
+  settingState.tabName && setTabName(settingState.tabName)
   show.value = false
 }
 watch(show, (e) => {

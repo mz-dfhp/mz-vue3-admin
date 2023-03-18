@@ -6,14 +6,21 @@ export interface ISettings {
   themeColor: string
   appDark: boolean
   transitionName: string
+  tabName: string
 }
 const pid = 'STORE__SETTING'
 export const settingStore = defineStore(pid, {
   state: (): ISettings => ({
-    expansion: false, //控制展开
-    themeColor: 'rgb(64,158,255)', // 主题色
-    appDark: false, //暗黑模式
-    transitionName: 'slide-fade' // 动画
+    //控制展开
+    expansion: false,
+    // 主题色
+    themeColor: 'rgb(64,158,255)',
+    //暗黑模式
+    appDark: false,
+    // 动画
+    transitionName: 'slide-fade',
+    // 标签风格
+    tabName: 'card'
   }),
   getters: {
     getExpansion(state: ISettings) {
@@ -27,6 +34,9 @@ export const settingStore = defineStore(pid, {
     },
     getTransitionName(state) {
       return state.transitionName
+    },
+    getTabName(state) {
+      return state.tabName
     }
   },
   actions: {
@@ -41,11 +51,14 @@ export const settingStore = defineStore(pid, {
     },
     setTransitionName(name: string) {
       this.transitionName = name
+    },
+    setTabName(name: string) {
+      this.tabName = name
     }
   },
   persist: {
     storage: localStorage,
-    paths: ['expansion', 'themeColor', 'appDark', 'transitionName']
+    paths: ['expansion', 'themeColor', 'appDark', 'transitionName', 'tabName']
   }
 })
 

@@ -32,6 +32,7 @@ module.exports = {
     'import-notation': 'string', //导入表示法
     'no-empty-source': null, //禁止空源
     'selector-class-pattern': null, //指定一个模式类选择符
+    'no-descending-specificity': null,
     // 指定样式的排序
     'order/properties-order': [
       'z-index',

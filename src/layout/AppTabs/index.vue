@@ -1,10 +1,10 @@
 <template>
-  <div class="tabs-container flex-between">
+  <div class="flex-between">
     <div class="flex-1 overflow-hidden">
       <el-tabs
         v-model="activeTab"
         type="card"
-        class="demo-tabs"
+        :class="tabName"
         @tab-remove="removeTab"
         @tab-click="tabClick"
       >
@@ -44,7 +44,8 @@ import { watch, ref, onMounted, computed } from 'vue'
 import { useRouter, useRoute, RouteLocationNormalizedLoaded } from 'vue-router'
 import { RouteItem, tabsStore } from '@/stores/modules/tabs'
 import { PageEnum } from '@/enmus'
-
+import { useTabName } from '@/hooks'
+const { tabName } = useTabName()
 const routerInstance = useRouter()
 const routeInstance = useRoute()
 const tabsStoreInstance = tabsStore()
@@ -171,96 +172,130 @@ const handleCommand = (e: number) => {
 }
 </script>
 <style lang="scss" scoped>
-.tabs-container {
-  :deep(.el-tabs) {
-    .el-tabs__header {
-      margin: 0;
-      border-bottom: none;
+:deep(.el-tabs) {
+  .el-tabs__header {
+    margin: 0;
+    border-bottom: none;
 
-      .el-tabs__nav-scroll {
-        padding: 0 20px;
+    .el-tabs__nav-scroll {
+      padding: 0 20px;
 
-        .el-tabs__nav {
-          border: none !important;
-
-          .el-tabs__item {
-            min-width: 100px;
-            margin-left: -10px;
-            text-align: center;
-            border: none !important;
-
-            &:hover {
-              z-index: 2;
-              position: relative;
-              background: $tabsHover;
-              border-radius: 8px 8px 0 0;
-
-              &::before {
-                position: absolute;
-                content: '';
-                bottom: 0;
-                left: -20px;
-                width: 20px;
-                height: 20px;
-                background: radial-gradient(
-                  circle at 0 0,
-                  transparent 20px,
-                  $tabsHover 21px
-                );
-              }
-
-              &::after {
-                position: absolute;
-                content: '';
-                right: -20px;
-                bottom: 0;
-                width: 20px;
-                height: 20px;
-                background: radial-gradient(
-                  circle at 100% 0,
-                  transparent 20px,
-                  $tabsHover 21px
-                );
-              }
-            }
-          }
-
-          .el-tabs__item.is-active {
-            z-index: 1;
-            position: relative;
-            background: $mainColor;
-            border-radius: 8px 8px 0 0;
-
-            &::before {
-              position: absolute;
-              content: '';
-              bottom: 0;
-              left: -20px;
-              width: 20px;
-              height: 20px;
-              background: radial-gradient(
-                circle at 0 0,
-                transparent 20px,
-                $mainColor 21px
-              );
-            }
-
-            &::after {
-              position: absolute;
-              content: '';
-              right: -20px;
-              bottom: 0;
-              width: 20px;
-              height: 20px;
-              background: radial-gradient(
-                circle at 100% 0,
-                transparent 20px,
-                $mainColor 21px
-              );
-            }
-          }
-        }
+      .el-tabs__nav {
+        border: none !important;
       }
+    }
+  }
+}
+// 卡片
+:deep(.card) {
+  .el-tabs__item {
+    min-width: 100px;
+    margin-left: -10px;
+    text-align: center;
+    border: none !important;
+
+    &:hover {
+      z-index: 2;
+      position: relative;
+      background: $tabsHover;
+      border-radius: 8px 8px 0 0;
+
+      &::before {
+        position: absolute;
+        content: '';
+        bottom: 0;
+        left: -20px;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(
+          circle at 0 0,
+          transparent 20px,
+          $tabsHover 21px
+        );
+      }
+
+      &::after {
+        position: absolute;
+        content: '';
+        right: -20px;
+        bottom: 0;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(
+          circle at 100% 0,
+          transparent 20px,
+          $tabsHover 21px
+        );
+      }
+    }
+  }
+
+  .el-tabs__item.is-active {
+    z-index: 1;
+    position: relative;
+    background: $mainColor;
+    border-radius: 8px 8px 0 0;
+
+    &::before {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      left: -20px;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(
+        circle at 0 0,
+        transparent 20px,
+        $mainColor 21px
+      );
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      right: -20px;
+      bottom: 0;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(
+        circle at 100% 0,
+        transparent 20px,
+        $mainColor 21px
+      );
+    }
+  }
+}
+// 灵动
+:deep(.etherealize) {
+  .el-tabs__item {
+    position: relative;
+    margin-right: 20px;
+    text-align: center;
+    border: none !important;
+    border-radius: 2px;
+
+    &::before {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--el-color-primary);
+      transition: 0.3s;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+
+  .el-tabs__item.is-active {
+    position: relative;
+    background: var(--el-color-primary-light-9);
+
+    &::before {
+      width: 100%;
     }
   }
 }

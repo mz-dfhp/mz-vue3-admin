@@ -64,8 +64,21 @@ export function useExpansion() {
 export function useTransitionName() {
   const settingStoreInstance = settingStore()
   const transitionName = computed(() => settingStoreInstance.getTransitionName)
-  function setTransitionName(flag: string) {
-    settingStoreInstance.setTransitionName(flag)
+  function setTransitionName(name: string) {
+    settingStoreInstance.setTransitionName(name)
   }
   return { transitionName, setTransitionName }
+}
+
+/**
+ * 动画
+ * @returns
+ */
+export function useTabName() {
+  const settingStoreInstance = settingStore()
+  const tabName = computed(() => settingStoreInstance.getTabName)
+  function setTabName(name: string) {
+    settingStoreInstance.setTabName(name)
+  }
+  return { tabName, setTabName }
 }
