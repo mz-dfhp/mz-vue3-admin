@@ -2,11 +2,9 @@
   <div>
     <el-menu
       class="common-menu"
-      :default-active="activeMenu"
+      :default-active="(activeMenu as any)"
       :collapse="props.expansion"
       unique-opened
-      @open="handleOpen"
-      @close="handleClose"
     >
       <AppMenuItem :menuList="menuList" />
     </el-menu>
@@ -35,14 +33,6 @@ watch(
   }
 )
 const menuList = menuStoreInstance.getMenus
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const handleOpen = (key: string, keyPath: string[]) => {
-  // console.log(key, keyPath)
-}
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const handleClose = (key: string, keyPath: string[]) => {
-  // console.log(key, keyPath)
-}
 </script>
 <style lang="scss" scoped>
 .common-menu {

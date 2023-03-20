@@ -4,12 +4,10 @@ const modules = import.meta.glob('./modules/*.router.ts', {
   eager: true
 })
 let modulesRoutes: Array<RouteRecordRaw> = []
+
 Object.keys(modules).forEach((item) => {
-  modulesRoutes = modulesRoutes.concat(modules[item] as Array<RouteRecordRaw>)
-  // modules[item]().then((mod) => {
-  //   modulesRoutes = modulesRoutes.concat(mod as Array<RouteRecordRaw>)
-  // })
+  modulesRoutes = modulesRoutes.concat(modules[item] as RouteRecordRaw)
 })
 const asyncRoutes: Array<RouteRecordRaw> = modulesRoutes
-
+console.log(asyncRoutes)
 export default asyncRoutes
