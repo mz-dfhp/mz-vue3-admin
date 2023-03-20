@@ -28,6 +28,7 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.0.23",
     "pinia-plugin-persistedstate": "^2.4.0",
+    "three": "^0.150.1",
     "vue": "^3.2.41",
     "vue-router": "4",
     "vuedraggable": "^4.1.0"
@@ -39,6 +40,7 @@
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.11.9",
     "@types/nprogress": "^0.2.0",
+    "@types/three": "^0.149.0",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "@vitejs/plugin-vue": "^3.2.0",
