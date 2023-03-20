@@ -19,9 +19,6 @@
     </div>
     <el-dropdown @command="handleCommand">
       <div
-        hover-scale-120
-        hover-rotate-90
-        transition-all
         class="w-50px i-bi:grid-fill text-16px cursor-pointer flex-shrink-0"
       ></div>
       <template #dropdown>
