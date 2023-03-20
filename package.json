@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "build-github": "vue-tsc --noEmit && vite build --base=/mz-vue3-admin/",
+    "build-github": "vue-tsc --noEmit && vite build --base=/mz-vue3-admin/ --mode github-io",
     "deploy": "deploy.sh",
     "preview": "vite preview",
     "lint": "npm run lint:eslint & npm run lint:stylelint & npm run lint:prettier",

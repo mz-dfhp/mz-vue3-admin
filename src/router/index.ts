@@ -1,11 +1,18 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory,
+  createWebHashHistory
+} from 'vue-router'
 import { App } from 'vue'
 import { basicsRoutes } from './basicsRoutes'
 
 import { createRouterPermissions } from './permissions'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history:
+    import.meta.env.MODE === 'github-io'
+      ? createWebHashHistory()
+      : createWebHistory(),
   routes: basicsRoutes
 })
 createRouterPermissions(router)
