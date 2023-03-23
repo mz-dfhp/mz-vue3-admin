@@ -1,6 +1,5 @@
 import { computed } from 'vue'
-import { settingStore } from '@/stores/modules/setting'
-
+import { ISettings, settingStore } from '@/stores/modules/setting'
 /**
  * 暗黑模式
  * @returns
@@ -64,7 +63,7 @@ export function useExpansion() {
 export function useTransitionName() {
   const settingStoreInstance = settingStore()
   const transitionName = computed(() => settingStoreInstance.getTransitionName)
-  function setTransitionName(name: string) {
+  function setTransitionName(name: ISettings['transitionName']) {
     settingStoreInstance.setTransitionName(name)
   }
   return { transitionName, setTransitionName }
@@ -77,7 +76,7 @@ export function useTransitionName() {
 export function useTabName() {
   const settingStoreInstance = settingStore()
   const tabName = computed(() => settingStoreInstance.getTabName)
-  function setTabName(name: string) {
+  function setTabName(name: ISettings['tabName']) {
     settingStoreInstance.setTabName(name)
   }
   return { tabName, setTabName }
