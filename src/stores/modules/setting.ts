@@ -5,8 +5,8 @@ export interface ISettings {
   expansion: boolean
   themeColor: string
   appDark: boolean
-  transitionName: string
-  tabName: string
+  transitionName: 'fade' | 'slide-fade' | 'zoom'
+  tabName: 'card' | 'etherealize'
 }
 const pid = 'STORE__SETTING'
 export const settingStore = defineStore(pid, {
@@ -18,7 +18,7 @@ export const settingStore = defineStore(pid, {
     //暗黑模式
     appDark: false,
     // 动画
-    transitionName: 'slide-fade',
+    transitionName: 'fade',
     // 标签风格
     tabName: 'card'
   }),
@@ -49,10 +49,10 @@ export const settingStore = defineStore(pid, {
     setAppDark(dark: boolean) {
       this.appDark = dark
     },
-    setTransitionName(name: string) {
+    setTransitionName(name: ISettings['transitionName']) {
       this.transitionName = name
     },
-    setTabName(name: string) {
+    setTabName(name: ISettings['tabName']) {
       this.tabName = name
     }
   },

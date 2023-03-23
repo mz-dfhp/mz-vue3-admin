@@ -267,7 +267,7 @@ const handleCommand = (e: number) => {
 :deep(.etherealize) {
   .el-tabs__item {
     position: relative;
-    margin-right: 20px;
+    margin-right: 16px;
     text-align: center;
     border: none !important;
     border-radius: 2px;
@@ -283,8 +283,27 @@ const handleCommand = (e: number) => {
       transition: 0.3s;
     }
 
-    &:hover::before {
-      width: 100%;
+    &:hover {
+      background: var(--el-color-primary-light-9);
+
+      &::before {
+        width: 100%;
+      }
+    }
+
+    + .el-tabs__item {
+      &::after {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: -8px;
+        width: 1px;
+        height: 60%;
+        background: var(--el-color-primary-light-3) !important;
+        border-radius: 1px;
+        opacity: 1;
+        transform: translateY(-50%) scaleX(0.5);
+      }
     }
   }
 
