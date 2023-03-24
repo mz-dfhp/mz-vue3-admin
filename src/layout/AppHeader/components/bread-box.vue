@@ -6,7 +6,7 @@
   </el-breadcrumb>
 </template>
 <script setup lang="ts" name="Bread-box">
-import { Route } from '@/types/router'
+import { Route } from '@/typings/router'
 import { watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
 const routeInstance = useRoute()

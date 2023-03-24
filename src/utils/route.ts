@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash-es'
-import { Route } from '@/types/router'
+import { Route } from '@/typings/router'
 import { IPermissionList } from '@/interface'
 import { RouteRecordRaw } from 'vue-router'
 function flatRoutes(
