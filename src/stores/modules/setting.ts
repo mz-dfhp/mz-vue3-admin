@@ -5,7 +5,7 @@ export interface ISettings {
   expansion: boolean
   themeColor: string
   appDark: boolean
-  transitionName: 'fade' | 'slide-fade' | 'zoom'
+  transitionName: 'fade' | 'slide-fade' | 'zoom' | 'fade-transform'
   tabName: 'card' | 'etherealize'
 }
 const pid = 'STORE__SETTING'

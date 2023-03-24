@@ -89,6 +89,10 @@ const transitionList = [
     title: '幻灯片'
   },
   {
+    name: 'fade-transform',
+    title: '滑动'
+  },
+  {
     name: 'zoom',
     title: '缩放'
   }
