@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
 import store from '@/stores'
-import { IPermissionList } from '@/interface'
+import { IPermission } from '@/interface'
 
 interface IMenu {
-  menus: IPermissionList[]
+  menus: IPermission[]
 }
 const pid = 'STORE__MENU'
 export const menuStore = defineStore(pid, {
@@ -16,8 +16,8 @@ export const menuStore = defineStore(pid, {
     }
   },
   actions: {
-    setMenus(list: IPermissionList[]) {
-      function sortList(list: IPermissionList[]) {
+    setMenus(list: IPermission[]) {
+      function sortList(list: IPermission[]) {
         return list.slice(0).sort((a, b) => (a?.sort || 1) - (b?.sort || 0))
       }
       this.menus = sortList(list)

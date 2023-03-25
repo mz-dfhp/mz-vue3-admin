@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash-es'
 import { Route } from '@/typings/router'
-import { IPermissionList } from '@/interface'
+import { IPermission } from '@/interface'
 import { RouteRecordRaw } from 'vue-router'
 function flatRoutes(
   routes: RouteRecordRaw[],
@@ -78,7 +78,7 @@ export function flatSystemRoutes(systemRoutes: RouteRecordRaw[]) {
  */
 export function diffRouterList(
   allRoutes: Array<RouteRecordRaw>,
-  userRoutes: Array<IPermissionList>
+  userRoutes: Array<IPermission>
 ): Array<RouteRecordRaw> {
   const resultRoutes: Array<RouteRecordRaw> = []
   allRoutes.forEach((item) => {
@@ -105,7 +105,7 @@ export function diffRouterList(
  *          只是前端自动生成方便一点
  */
 export function formatteRoutes(list: Array<RouteRecordRaw>) {
-  const result: IPermissionList[] = []
+  const result: IPermission[] = []
   list.forEach((item) => {
     !item.meta?.hide &&
       result.push({

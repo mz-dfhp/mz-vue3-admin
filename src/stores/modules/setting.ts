@@ -14,7 +14,7 @@ export const settingStore = defineStore(pid, {
     //控制展开
     expansion: false,
     // 主题色
-    themeColor: 'rgb(64,158,255)',
+    themeColor: 'rgb(52, 8, 95)',
     //暗黑模式
     appDark: false,
     // 动画

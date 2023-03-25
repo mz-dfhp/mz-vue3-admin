@@ -1,15 +1,15 @@
-export interface IPermissionList {
+export interface IPermission {
   name: string
   path: string
   title?: string
   sort?: number
   icon?: string
-  children?: Array<IPermissionList>
+  children?: Array<IPermission>
 }
 
 export interface UserInfo {
   name?: string
   avatar?: string
   role?: string
-  permission: Array<IPermissionList>
+  permission: Array<IPermission>
 }

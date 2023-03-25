@@ -18,11 +18,11 @@
   </template>
 </template>
 <script lang="ts" setup name="AppMenuItem">
-import { IPermissionList } from '@/interface'
+import { IPermission } from '@/interface'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 interface IProps {
-  menuList: Array<IPermissionList>
+  menuList: IPermission[]
 }
 const props = withDefaults(defineProps<IProps>(), {
   menuList: () => []
