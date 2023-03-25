@@ -53,19 +53,19 @@ const routes: RouteRecordRaw = {
       }
     },
     {
-      path: 'writer-pinia',
-      name: `${routeName}-writer-pinia`,
-      component: () => import('@/views/project/writer-pinia.vue'),
+      path: 'write-pinia',
+      name: `${routeName}-write-pinia`,
+      component: () => import('@/views/project/write-pinia.vue'),
       meta: {
-        title: 'writer-pinia'
+        title: 'write-pinia'
       }
     },
     {
-      path: 'writer-react',
-      name: `${routeName}-writer-react`,
-      component: () => import('@/views/project/writer-react.vue'),
+      path: 'write-react',
+      name: `${routeName}-write-react`,
+      component: () => import('@/views/project/write-react.vue'),
       meta: {
-        title: 'writer-react'
+        title: 'write-react'
       }
     }
   ]

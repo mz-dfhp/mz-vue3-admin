@@ -1,7 +1,7 @@
 <template>
-  <div class="h-100vh w-100vw overflow-hidden">
-    <el-container h-100vh>
-      <el-aside width="auto" height="100%" class="overflow-hidden!">
+  <div class="h-100% w-100% overflow-hidden">
+    <el-container class="h-100%!">
+      <el-aside width="auto" class="overflow-hidden! h-100%!">
         <AppMenu :expansion="expansion" />
       </el-aside>
       <el-container>
