@@ -14,7 +14,8 @@
 
 #### 预览
 <a href="http://120.78.132.170:8080" target="_blank">预览地址一</a>
-<a href="https://mz-dfhp.github.io/mz-vue3-admin/" target="_blank">预览地址二</0a>
+
+<a href="https://mz-dfhp.github.io/mz-vue3-admin/" target="_blank">预览地址二</a>
 
 #### 代码仓库
 
@@ -30,7 +31,6 @@ cd mz-vue3-admin
 
 # 安装依赖
 pnpm install
-
 
 # 运行项目
 pnpm dev
