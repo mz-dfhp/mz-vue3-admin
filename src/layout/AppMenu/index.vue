@@ -6,8 +6,10 @@
       <AppLogo :expansion="expansion" />
       <div class="flex-1 overflow-y-auto p-10px">
         <div
-          class="flex-center flex-col m-b-10px p-y-10px cursor-pointer rounded-4px"
-          :class="parentActiveMenu === item.name ? 'bg-main' : ''"
+          class="flex-center flex-col m-b-5px p-y-10px cursor-pointer rounded-4px hover-bg-[var(--el-color-primary-light-5)]"
+          :class="
+            parentActiveMenu === item.name ? 'bg-main hover-bg-main!' : ''
+          "
           v-for="(item, index) in getMenus"
           :key="index"
           @click="onParentActiveMenuChange(item)"
@@ -100,7 +102,7 @@ watch(
   .el-menu-item {
     position: relative;
     overflow: hidden;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border-radius: 5px 0 0 5px;
 
     &::after {

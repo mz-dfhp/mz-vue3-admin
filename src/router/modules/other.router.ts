@@ -42,14 +42,6 @@ const routes: RouteRecordRaw = {
       meta: {
         title: '水印'
       }
-    },
-    {
-      path: 'three',
-      name: `${routeName}-three`,
-      component: () => import('@/views/other/three.vue'),
-      meta: {
-        title: 'three'
-      }
     }
   ]
 }

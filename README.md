@@ -13,7 +13,8 @@
 - [X] 路由错误
 
 #### 预览
-<a href="http://120.78.132.170:8080/index" target="_blank">预览地址</a>
+<a href="http://120.78.132.170:8080" target="_blank">预览地址一</a>
+<a href="https://mz-dfhp.github.io/mz-vue3-admin/" target="_blank">预览地址二</0a>
 
 #### 代码仓库
 
@@ -30,8 +31,6 @@ cd mz-vue3-admin
 # 安装依赖
 pnpm install
 
-# 解决windows换行crlf与lf冲突
-pnpm lint
 
 # 运行项目
 pnpm dev
