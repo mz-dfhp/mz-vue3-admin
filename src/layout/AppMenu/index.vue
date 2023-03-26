@@ -1,7 +1,7 @@
 <template>
-  <div class="flex h-100% hidden">
+  <div class="flex h-100% overflow-hidden">
     <div
-      class="w-80px flex flex-col h-100% menu-left bg-[var(--el-color-primary-light-3)]"
+      class="w-80px flex flex-col h-100% bg-[var(--el-color-primary-light-3)]"
     >
       <AppLogo :expansion="expansion" />
       <div class="flex-1 overflow-y-auto p-10px">
@@ -15,7 +15,7 @@
           @click="onParentActiveMenuChange(item)"
         >
           <div class="i-bi:grid text-20px bg-white"></div>
-          <div text="center white" m-t-5px>{{ item.title }}</div>
+          <div text="center white" m-t-5px break-all>{{ item.title }}</div>
         </div>
       </div>
     </div>

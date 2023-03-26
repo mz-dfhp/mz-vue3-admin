@@ -57,7 +57,8 @@ export function useWatermark({ text, targetRef }: WatermarkOptions) {
   })
 
   onUnmounted(() => {
-    window.removeEventListener('resize', throttle(handerWatermark, 500))
+    removeWatermark()
+    window.removeEventListener('resize', handerWatermark)
   })
   return {
     renderWatermark,

@@ -6,7 +6,7 @@ const routes: RouteRecordRaw = {
   name: routeName,
   component: layout,
   meta: {
-    title: '缓存Keep',
+    title: '缓存',
     sort: 3,
     icon: 'i-bi:grid'
   },

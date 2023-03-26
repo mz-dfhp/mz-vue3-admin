@@ -6,25 +6,41 @@ const routes: RouteRecordRaw = {
   name: routeName,
   component: layout,
   meta: {
-    title: '组件',
+    title: '组件库',
     sort: 3,
     icon: 'i-bi:grid'
   },
   children: [
     {
-      path: 'component-one',
-      name: `${routeName}-one`,
-      component: () => import('@/views/component/component-one.vue'),
+      path: 'music',
+      name: `${routeName}-music`,
+      component: () => import('@/views/component/music.vue'),
       meta: {
-        title: '组件1'
+        title: '音乐播放器'
       }
     },
     {
-      path: 'component-two',
-      name: `${routeName}-two`,
-      component: () => import('@/views/component/component-two.vue'),
+      path: 'video',
+      name: `${routeName}-video`,
+      component: () => import('@/views/component/video.vue'),
       meta: {
-        title: '组件2'
+        title: '视频播放器'
+      }
+    },
+    {
+      path: 'QRCode',
+      name: `${routeName}-QRCode`,
+      component: () => import('@/views/component/QRCode.vue'),
+      meta: {
+        title: '二维码'
+      }
+    },
+    {
+      path: 'signature',
+      name: `${routeName}-signature`,
+      component: () => import('@/views/component/signature.vue'),
+      meta: {
+        title: '签名'
       }
     }
   ]
