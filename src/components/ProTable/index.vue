@@ -4,6 +4,7 @@
     ref="tableRef"
     :data="data"
     border
+    :row-key="rowKey"
     element-loading-text="加载中"
     element-loading-background="rgba(122, 122, 122, 0.8)"
     @selection-change="selectionChange"
@@ -29,7 +30,7 @@
       <template v-else>
         <TableColumn :column="item">
           <template v-for="slot in Object.keys($slots)" #[slot]="scope">
-            <slot :name="slot" :row="scope.row"></slot>
+            <slot :name="slot" v-bind="scope"></slot>
           </template>
         </TableColumn>
       </template>
