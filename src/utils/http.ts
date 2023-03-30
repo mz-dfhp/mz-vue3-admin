@@ -1,9 +1,8 @@
 import axios from 'axios'
 import { userStoreWithout } from '@/stores/modules/user'
-import requestConfig from './config'
 import { ElMessage } from 'element-plus'
 import 'element-plus/es/components/message/style/css'
-import { responseCodeEnum } from '@/enmus'
+import { responseCodeEnum, requestConfigEnum } from '@/enmus'
 import { loginOut } from '@/api'
 
 /**
@@ -12,14 +11,15 @@ import { loginOut } from '@/api'
  *  2. axios 内部content-type 内部是自动设置了
  */
 const instance = axios.create({
-  baseURL: requestConfig.baseURL,
-  timeout: requestConfig.timeout
+  baseURL: requestConfigEnum['BASE_URL'] as string,
+  timeout: requestConfigEnum['TIME_OUT'] as number
 })
 
 instance.interceptors.request.use(
   (config) => {
     const token = userStoreWithout().getToken
-    if (token && config.headers) config.headers[requestConfig.tokenName] = token
+    if (token && config.headers)
+      config.headers[requestConfigEnum['TOKEN_NAME']] = token
     return config
   },
   (error) => {
@@ -29,7 +29,7 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (config) => {
-    if (config.data.status === responseCodeEnum.loginCode) {
+    if (config.data.status === responseCodeEnum['ERROR_CODE']) {
       ElMessage.error(config.data.message)
       loginOut()
     } else {
