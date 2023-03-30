@@ -3,8 +3,9 @@
 </template>
 
 <script lang="tsx" setup name="TableColumn">
-import { ColumnProps } from '@/types'
 import { useSlots } from 'vue'
+import { ColumnProps } from '@/types'
+import { handleRowAccordingToProp } from '@/utils'
 
 defineProps<{ column: ColumnProps }>()
 const slots = useSlots()
@@ -13,12 +14,7 @@ const renderCellData = (
   item: ColumnProps,
   scope: { row: { [x: string]: any } }
 ) => {
-  return (
-    item.prop &&
-    (typeof scope.row[item.prop] === 'number'
-      ? scope.row[item.prop]
-      : scope.row[item.prop] || '-')
-  )
+  return item.prop ? handleRowAccordingToProp(scope.row, item.prop) : '-'
 }
 
 const renderLoop = (item: ColumnProps) => {

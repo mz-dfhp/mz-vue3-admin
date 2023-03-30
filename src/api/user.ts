@@ -1,6 +1,6 @@
 import { UserInfo } from '@/interface'
 import asyncRoutes from '@/router/asyncRoutes'
-import { formatteRoutes } from '@/utils/route'
+import { formatteRoutes } from '@/utils'
 
 export function getUserInfo(role: string) {
   return new Promise<UserInfo>((resolve) => {

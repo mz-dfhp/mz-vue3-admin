@@ -4,7 +4,7 @@ import { routeStoreWithout } from '@/stores/modules/route'
 import { menuStoreWithout } from '@/stores/modules/menu'
 import { userStoreWithout } from '@/stores/modules/user'
 import { getUserInfo } from '@/api'
-import { diffRouterList } from '@/utils/route'
+import { diffRouterList } from '@/utils'
 import { errorRoutes } from './basicsRoutes'
 export async function setAsyncRoutes() {
   const routeStoreInstance = routeStoreWithout()

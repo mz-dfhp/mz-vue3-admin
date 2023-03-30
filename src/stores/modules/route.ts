@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { cloneDeep } from 'lodash-es'
 import store from '@/stores'
-import { flatSystemRoutes } from '@/utils/route'
+import { flatSystemRoutes } from '@/utils'
 import { RouteRecordRaw } from 'vue-router'
 interface IRoute {
   routes: Array<RouteRecordRaw>
