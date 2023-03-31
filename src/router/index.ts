@@ -5,8 +5,8 @@ import {
 } from 'vue-router'
 import { App } from 'vue'
 import { basicsRoutes } from './basicsRoutes'
-
 import { createRouterPermissions } from './permissions'
+import { extensionRouter } from './extensionRouter'
 
 const router = createRouter({
   history:
@@ -16,6 +16,7 @@ const router = createRouter({
   routes: basicsRoutes
 })
 createRouterPermissions(router)
+extensionRouter(router)
 
 export function setupRouter(app: App<Element>) {
   app.use(router)
