@@ -1,12 +1,12 @@
-import { computed } from 'vue'
-import { ISettings, settingStore } from '@/stores/modules/setting'
+import { storeToRefs } from 'pinia'
+import { settingStore } from '@/stores/modules/setting'
 /**
  * 暗黑模式
  * @returns
  */
 export function useDark() {
   const settingStoreInstance = settingStore()
-  const dark = computed(() => settingStoreInstance.getAppDark)
+  const { getAppDark: dark } = storeToRefs(settingStoreInstance)
   function setDark(flag: boolean) {
     settingStoreInstance.setAppDark(flag)
     document.documentElement.classList.toggle('dark')
@@ -23,7 +23,7 @@ export function useThemeColor() {
     [propName: string]: string | number
   }
   const settingStoreInstance = settingStore()
-  const themeColor = computed(() => settingStoreInstance.getThemeColor)
+  const { getThemeColor: themeColor } = storeToRefs(settingStoreInstance)
   function setThemeColor(color: string) {
     settingStoreInstance.setThemeColor(color)
     const el: HTMLElement = document.documentElement
@@ -39,6 +39,7 @@ export function useThemeColor() {
     Object.keys(colors).forEach((item: string) => {
       el.style.setProperty(item, `${color.replace(')', '')},${colors[item]})`)
     })
+    el.style.setProperty('--el-text-color-secondary', color)
   }
   return { themeColor, setThemeColor }
 }
@@ -49,10 +50,8 @@ export function useThemeColor() {
  */
 export function useExpansion() {
   const settingStoreInstance = settingStore()
-  const expansion = computed(() => settingStoreInstance.getExpansion)
-  function setExpansion(flag: boolean) {
-    settingStoreInstance.setExpansion(flag)
-  }
+  const { getExpansion: expansion } = storeToRefs(settingStoreInstance)
+  const setExpansion = settingStoreInstance.setExpansion
   return { expansion, setExpansion }
 }
 
@@ -62,10 +61,9 @@ export function useExpansion() {
  */
 export function useTransitionName() {
   const settingStoreInstance = settingStore()
-  const transitionName = computed(() => settingStoreInstance.getTransitionName)
-  function setTransitionName(name: ISettings['transitionName']) {
-    settingStoreInstance.setTransitionName(name)
-  }
+  const { getTransitionName: transitionName } =
+    storeToRefs(settingStoreInstance)
+  const setTransitionName = settingStoreInstance.setTransitionName
   return { transitionName, setTransitionName }
 }
 
@@ -75,9 +73,7 @@ export function useTransitionName() {
  */
 export function useTabName() {
   const settingStoreInstance = settingStore()
-  const tabName = computed(() => settingStoreInstance.getTabName)
-  function setTabName(name: ISettings['tabName']) {
-    settingStoreInstance.setTabName(name)
-  }
+  const { getTabName: tabName } = storeToRefs(settingStoreInstance)
+  const setTabName = settingStoreInstance.setTabName
   return { tabName, setTabName }
 }

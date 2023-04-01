@@ -18,7 +18,7 @@ export const settingStore = defineStore(pid, {
     //暗黑模式
     appDark: false,
     // 动画
-    transitionName: 'fade',
+    transitionName: 'fade-transform',
     // 标签风格
     tabName: 'card'
   }),

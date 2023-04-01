@@ -7,52 +7,10 @@
  */
 
 import { ElTable } from 'element-plus'
-import { throttle } from 'lodash-es'
-import { computed, onMounted, onUnmounted, Ref, ref } from 'vue'
+import { computed, ref } from 'vue'
 
 /**
- * @description:获取表格父元素高度
- * @return {*}
- */
-export function useTableWrapperHeight(): {
-  tableWrapperHeight: Ref<number>
-  tableWrapperRef: Ref<HTMLElement | null>
-} {
-  const tableWrapperHeight = ref(0)
-  const tableWrapperRef = ref<HTMLElement | null>(null)
-  const onGetParentHeight = () => {
-    const element = tableWrapperRef.value?.parentElement
-    const paddingTop = element
-      ? window.getComputedStyle(element, null).getPropertyValue('padding-top')
-      : '0px'
-    const paddingBottom = element
-      ? window
-          .getComputedStyle(element, null)
-          .getPropertyValue('padding-bottom')
-      : '0px'
-    tableWrapperHeight.value = element
-      ? element.clientHeight -
-        Number(paddingTop.replace('px', '')) -
-        Number(paddingBottom.replace('px', ''))
-      : 0
-  }
-  const handleHeight = throttle(onGetParentHeight, 500)
-  onMounted(() => {
-    onGetParentHeight()
-    window.addEventListener('resize', handleHeight)
-  })
-
-  onUnmounted(() => {
-    window.removeEventListener('resize', handleHeight)
-  })
-  return {
-    tableWrapperHeight,
-    tableWrapperRef
-  }
-}
-
-/**
- * @description:
+ * @description: 表格选择 check
  * @param {*} rowKey 表格 rowKey
  * @return {*}
  */

@@ -1,3 +1,11 @@
+/*
+ * @Author: mz 486836332@qq.com
+ * @Date: 2023-03-24 23:02:03
+ * @LastEditors: mz 486836332@qq.com
+ * @LastEditTime: 2023-04-01 13:46:13
+ * @Description:水印
+ */
+
 import { onMounted, onUnmounted, Ref } from 'vue'
 import { throttle } from 'lodash-es'
 interface WatermarkOptions {

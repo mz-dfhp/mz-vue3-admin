@@ -12,11 +12,11 @@ const routes: RouteRecordRaw = {
   },
   children: [
     {
-      path: 'threeJs-one',
-      name: `${routeName}-one`,
-      component: () => import('@/views/threeJs/threeJs-one.vue'),
+      path: 'hello-threeJs',
+      name: `${routeName}-Hello-threeJs`,
+      component: () => import('@/views/threeJs/hello-threejs.vue'),
       meta: {
-        title: 'threeJs-one'
+        title: 'hello-threeJs'
       }
     },
     {

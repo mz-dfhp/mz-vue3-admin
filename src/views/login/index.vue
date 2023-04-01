@@ -8,14 +8,16 @@
           :model="loginForm"
           ref="FormRef"
           :rules="rules"
+          status-icon
+          label-position="top"
         >
           <el-form-item>
-            <div class="text-8 font-bold p-b-10 text-#5B86E5">木子</div>
+            <div class="text-8 font-bold p-b-10 text-main">mz-vue3-admin</div>
           </el-form-item>
-          <el-form-item prop="userName">
+          <el-form-item prop="userName" label="账号">
             <el-input v-model="loginForm.userName" placeholder="userName" />
           </el-form-item>
-          <el-form-item prop="passWord">
+          <el-form-item prop="passWord" label="密码">
             <el-input
               v-model="loginForm.passWord"
               type="passWord"

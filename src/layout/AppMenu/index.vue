@@ -4,12 +4,13 @@
       class="w-80px flex flex-col h-100% bg-[var(--el-color-primary-light-3)]"
     >
       <AppLogo :expansion="expansion" />
-      <div class="flex-1 overflow-y-auto p-10px">
+      <el-scrollbar class="flex-1 p-10px">
         <div
-          class="flex-center flex-col m-b-5px p-y-10px cursor-pointer rounded-4px hover-bg-[var(--el-color-primary-light-5)]"
-          :class="
-            parentActiveMenu === item.name ? 'bg-main hover-bg-main!' : ''
-          "
+          class="flex-center flex-col p-y-10px cursor-pointer rounded-4px hover-bg-[var(--el-color-primary-light-5)]"
+          :class="{
+            'bg-main hover-bg-main!': parentActiveMenu === item.name,
+            'm-t-5px': index !== 0
+          }"
           v-for="(item, index) in getMenus"
           :key="index"
           @click="onParentActiveMenuChange(item)"
@@ -17,26 +18,28 @@
           <div class="i-bi:grid text-20px bg-white"></div>
           <div text="center white" m-t-5px break-all>{{ item.title }}</div>
         </div>
-      </div>
+      </el-scrollbar>
     </div>
-    <div
-      class="overflow-y-auto overflow-x-hidden w-200px transition-all"
-      :class="props.expansion ? 'w-0!' : ''"
-    >
-      <div p-x-10px>
-        <div class="h-60px flex-center">
-          <div class="flex-shrink-0">mz-vue3-admin</div>
+    <el-scrollbar>
+      <div
+        class="overflow-x-hidden w-200px transition-all"
+        :class="props.expansion ? 'w-0!' : ''"
+      >
+        <div p-x-10px>
+          <div class="h-60px flex-center">
+            <div class="flex-shrink-0">mz-vue3-admin</div>
+          </div>
+          <el-menu
+            class="common-menu"
+            :default-active="(activeMenu as any)"
+            :collapse="props.expansion"
+            unique-opened
+          >
+            <AppMenuItem :menuList="menuList" />
+          </el-menu>
         </div>
-        <el-menu
-          class="common-menu"
-          :default-active="(activeMenu as any)"
-          :collapse="props.expansion"
-          unique-opened
-        >
-          <AppMenuItem :menuList="menuList" />
-        </el-menu>
       </div>
-    </div>
+    </el-scrollbar>
   </div>
 </template>
 

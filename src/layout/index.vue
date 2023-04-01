@@ -9,11 +9,15 @@
           <AppHeader />
         </el-header>
         <AppTabs />
-        <el-main class="bg-[var(--bgc)]">
-          <div class="min-h-100% min-w-100%">
-            <AppMain />
-          </div>
-          <AppSetting />
+        <el-main class="bg-[var(--bgc)] p-0!">
+          <el-scrollbar class="p-x-[var(--el-main-padding)] box-border">
+            <div
+              class="min-h-100% w-100% overflow-x-hidden p-y-[var(--el-main-padding)]"
+            >
+              <AppMain />
+            </div>
+            <AppSetting />
+          </el-scrollbar>
         </el-main>
       </el-container>
     </el-container>
