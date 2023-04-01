@@ -42,6 +42,14 @@ const routes: RouteRecordRaw = {
       meta: {
         title: '签名'
       }
+    },
+    {
+      path: 'growth',
+      name: `${routeName}-growth`,
+      component: () => import('@/views/component/growth.vue'),
+      meta: {
+        title: '数字增长'
+      }
     }
   ]
 }

@@ -5,7 +5,9 @@
         <el-card shadow="hover">
           <div flex-center flex-col>
             <div>访问量</div>
-            <div text-10 m-t-2 font-bold>999</div>
+            <div text-10 m-t-2 font-bold>
+              <DataGrowth :targetVal="999" />
+            </div>
           </div>
         </el-card>
       </el-col>
@@ -13,7 +15,9 @@
         <el-card shadow="hover">
           <div flex-center flex-col>
             <div>点赞量</div>
-            <div text-10 m-t-2 font-bold>40</div>
+            <div text-10 m-t-2 font-bold>
+              <DataGrowth :targetVal="888" />
+            </div>
           </div>
         </el-card>
       </el-col>
@@ -21,7 +25,9 @@
         <el-card shadow="hover">
           <div flex-center flex-col bord>
             <div>下载量</div>
-            <div text-10 m-t-2 font-bold>10</div>
+            <div text-10 m-t-2 font-bold>
+              <DataGrowth :targetVal="50" unit="%" />
+            </div>
           </div>
         </el-card>
       </el-col>
@@ -29,7 +35,9 @@
         <el-card shadow="hover">
           <div flex-center flex-col>
             <div>成交量</div>
-            <div text-10 m-t-2 font-bold>20</div>
+            <div text-10 m-t-2 font-bold>
+              <DataGrowth :targetVal="666" />
+            </div>
           </div>
         </el-card>
       </el-col>
