@@ -10,12 +10,12 @@ import { loginOut } from '@/api'
  *  1. axios 不需要过度封装！！！
  *  2. axios 内部content-type 内部是自动设置了
  */
-const instance = axios.create({
+export const http = axios.create({
   baseURL: requestConfigEnum['BASE_URL'] as string,
   timeout: requestConfigEnum['TIME_OUT'] as number
 })
 
-instance.interceptors.request.use(
+http.interceptors.request.use(
   (config) => {
     const token = userStoreWithout().getToken
     if (token && config.headers)
@@ -27,7 +27,7 @@ instance.interceptors.request.use(
   }
 )
 
-instance.interceptors.response.use(
+http.interceptors.response.use(
   (config) => {
     if (config.data.status === responseCodeEnum['ERROR_CODE']) {
       ElMessage.error(config.data.message)
@@ -54,5 +54,3 @@ instance.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-
-export default instance

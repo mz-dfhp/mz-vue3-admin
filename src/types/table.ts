@@ -5,6 +5,6 @@ export interface ColumnProps<T = any>
     Omit<TableColumnCtx<T>, 'children' | 'renderHeader' | 'renderCell'>
   > {
   headerRender?: (row: ColumnProps) => any
-  render?: (scope: { row: T }) => any
+  render?: (scope: { row: T; $index: number }) => any
   _children?: ColumnProps<T>[]
 }
