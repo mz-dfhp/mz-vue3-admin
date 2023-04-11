@@ -38,7 +38,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'signature',
       name: `${routeName}-signature`,
-      component: () => import('@/views/component/signature.vue'),
+      component: () => import('@/views/component/signature-demo.vue'),
       meta: {
         title: '签名'
       }

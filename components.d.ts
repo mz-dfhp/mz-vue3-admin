@@ -40,6 +40,7 @@ declare module '@vue/runtime-core' {
     ProTable: typeof import('./src/components/ProTable/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Signature: typeof import('./src/components/Signature/index.vue')['default']
     TableColumn: typeof import('./src/components/ProTable/components/TableColumn.vue')['default']
   }
   export interface ComponentCustomProperties {
