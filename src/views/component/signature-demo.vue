@@ -29,7 +29,7 @@ const onConfirm = () => {
   signatureRef.value.confirm()
 }
 
-const confirm = (canvas, data) => {
+const confirm = (canvas: any, data: any) => {
   if (data === '') {
     console.log(canvas)
     return false
