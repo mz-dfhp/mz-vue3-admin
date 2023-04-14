@@ -1,5 +1,5 @@
 <template>
-  <div class="nut-signature-inner" ref="wrap">
+  <div ref="wrap">
     <canvas
       ref="canvas"
       :height="canvasState.canvasHeight"
@@ -8,7 +8,7 @@
   </div>
 </template>
 <script setup lang="ts" name="signature">
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted, nextTick } from 'vue'
 interface Iprops {
   lineWidth?: number
   strokeStyle?: string
@@ -157,9 +157,11 @@ const onSave = (canvas: {
 
 onMounted(() => {
   if (isCanvasSupported()) {
-    canvasState.ctx = canvas.value.getContext('2d')
-    canvasState.canvasWidth = wrap.value.offsetWidth
-    canvasState.canvasHeight = wrap.value.offsetHeight
+    nextTick(() => {
+      canvasState.ctx = canvas.value.getContext('2d')
+      canvasState.canvasWidth = wrap.value.offsetWidth
+      canvasState.canvasHeight = wrap.value.offsetHeight
+    })
     addEvent()
   }
 })

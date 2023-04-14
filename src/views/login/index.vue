@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-#5B86E5 w100% h100% flex-center">
+  <div class="bg-[var(--el-color-primary-light-3)] w100% h100% flex-center">
     <div class="w80% h80% bg-#ABC1F2 flex rounded-10px overflow-hidden">
       <div lg-flex-1></div>
       <div class="bg-#ffffff flex-1 flex">
@@ -15,23 +15,29 @@
             <div class="text-8 font-bold p-b-10 text-main">mz-vue3-admin</div>
           </el-form-item>
           <el-form-item prop="userName" label="账号">
-            <el-input v-model="loginForm.userName" placeholder="userName" />
+            <el-input
+              v-model="loginForm.userName"
+              size="large"
+              placeholder="userName"
+            />
           </el-form-item>
           <el-form-item prop="passWord" label="密码">
             <el-input
               v-model="loginForm.passWord"
               type="passWord"
+              size="large"
               placeholder="passWord"
             />
           </el-form-item>
           <el-form-item>
             <el-button
               type="primary"
-              class="w-100%"
+              class="w-100% p-y-20px!"
               :loading="loading"
               @click="submitForm('')"
-              >login</el-button
             >
+              login
+            </el-button>
           </el-form-item>
           <el-form-item>
             <el-button
