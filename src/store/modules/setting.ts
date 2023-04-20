@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import store from '@/stores'
+import store from '@/store'
 
 export interface ISettings {
   expansion: boolean

@@ -42,7 +42,7 @@
 <script lang="ts" setup name="AppTabs">
 import { watch, ref, onMounted, computed } from 'vue'
 import { useRouter, useRoute, RouteLocationNormalizedLoaded } from 'vue-router'
-import { RouteItem, tabsStore } from '@/stores/modules/tabs'
+import { RouteItem, tabsStore } from '@/store/modules/tabs'
 import { PageEnum } from '@/enmus'
 import { useTabName, useRefresh } from '@/hooks'
 

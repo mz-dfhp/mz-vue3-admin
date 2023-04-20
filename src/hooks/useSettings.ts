@@ -1,5 +1,5 @@
 import { storeToRefs } from 'pinia'
-import { settingStore } from '@/stores/modules/setting'
+import { settingStore } from '@/store/modules/setting'
 /**
  * 暗黑模式
  * @returns

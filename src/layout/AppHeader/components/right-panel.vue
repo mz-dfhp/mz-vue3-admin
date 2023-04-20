@@ -56,7 +56,7 @@
 <script setup lang="ts" name="RightPanel">
 import { useDark } from '@/hooks'
 import { useFullscreen } from '@vueuse/core'
-import { userStore } from '@/stores/modules/user'
+import { userStore } from '@/store/modules/user'
 import { useRefresh } from '@/hooks'
 
 const { refresh } = useRefresh()

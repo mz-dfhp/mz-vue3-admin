@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { userStoreWithout } from '@/stores/modules/user'
+import { userStoreWithout } from '@/store/modules/user'
 import { ElMessage } from 'element-plus'
 import 'element-plus/es/components/message/style/css'
 import { responseCodeEnum, requestConfigEnum } from '@/enmus'

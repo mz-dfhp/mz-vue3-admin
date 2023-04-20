@@ -1,6 +1,6 @@
 <script setup lang="ts" name="Keep-four-page">
 import { ref } from 'vue'
-import { keepAliveStore } from '@/stores/modules/keepAlive'
+import { keepAliveStore } from '@/store/modules/keepAlive'
 const keepAliveStoreInstance = keepAliveStore()
 const input = ref('')
 const removeKeep = () => {

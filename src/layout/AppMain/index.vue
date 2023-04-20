@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts" name="AppMain">
-import { keepAliveStore } from '@/stores/modules/keepAlive'
-import { settingStore } from '@/stores/modules/setting'
+import { keepAliveStore } from '@/store/modules/keepAlive'
+import { settingStore } from '@/store/modules/setting'
 import { computed } from 'vue'
 const keepAliveInstance = keepAliveStore()
 const settingStoreInstance = settingStore()

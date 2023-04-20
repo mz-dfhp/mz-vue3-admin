@@ -1,7 +1,7 @@
 <script setup lang="ts" name="Keep-one">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { keepAliveStore } from '@/stores/modules/keepAlive'
+import { keepAliveStore } from '@/store/modules/keepAlive'
 
 const routerInstance = useRouter()
 const goToInfoPage = () => {

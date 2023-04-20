@@ -1,5 +1,5 @@
 import { Router, RouteLocationRaw, RouteRecordName } from 'vue-router'
-import { tabsStoreWithout } from '@/stores/modules/tabs'
+import { tabsStoreWithout } from '@/store/modules/tabs'
 
 /**
  * @description: router 扩展

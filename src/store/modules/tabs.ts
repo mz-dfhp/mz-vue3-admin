@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { RouteLocationNormalized } from 'vue-router'
-import store from '@/stores'
+import store from '@/store'
 export type RouteItem = Partial<RouteLocationNormalized> & {
   fullPath: string
   path: string
