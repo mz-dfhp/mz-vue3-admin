@@ -3,7 +3,7 @@
     <div @click="setExpansion(!expansion)" class="mr20px">
       <div
         cursor-pointer
-        :class="expansion ? 'i-bi:text-left' : 'i-bi:text-right'"
+        :class="expansion ? 'i-bi:text-indent-left' : 'i-bi:text-indent-right'"
       ></div>
     </div>
     <BreadBox />
