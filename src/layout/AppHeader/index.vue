@@ -11,9 +11,10 @@
   </div>
 </template>
 <script setup lang="ts" name="AppHeader">
-import { useExpansion } from '@/hooks'
 import BreadBox from './components/bread-box.vue'
 import RightPanel from './components/right-panel.vue'
-const { expansion, setExpansion } = useExpansion()
+import { useSettings } from '@/hooks'
+
+const { expansion, setExpansion } = useSettings()
 </script>
 <style scoped lang="scss"></style>

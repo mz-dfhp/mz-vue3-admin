@@ -42,6 +42,11 @@
         </slot>
       </div>
     </template>
+    <template #append>
+      <div class="table-append">
+        <slot name="append"> </slot>
+      </div>
+    </template>
   </el-table>
 </template>
 

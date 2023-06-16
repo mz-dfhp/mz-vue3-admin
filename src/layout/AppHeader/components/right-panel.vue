@@ -54,13 +54,13 @@
 </template>
 
 <script setup lang="ts" name="RightPanel">
-import { useDark } from '@/hooks'
+import { useSettings } from '@/hooks/useSettings'
 import { useFullscreen } from '@vueuse/core'
 import { userStore } from '@/store/user'
 import { useRefresh } from '@/hooks'
 
 const { refresh } = useRefresh()
-const { dark, setDark } = useDark()
+const { dark, setDark } = useSettings()
 const { isFullscreen, toggle } = useFullscreen()
 
 const userInfo = userStore().getUserInfo

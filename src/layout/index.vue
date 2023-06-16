@@ -29,7 +29,8 @@ import AppHeader from './AppHeader/index.vue'
 import AppMain from './AppMain/index.vue'
 import AppTabs from './AppTabs/index.vue'
 import AppSetting from './AppSetting/index.vue'
-import { useExpansion } from '@/hooks'
-const { expansion } = useExpansion()
+import { useSettings } from '@/hooks'
+
+const { expansion } = useSettings()
 </script>
 <style scoped lang="scss" name="layout"></style>

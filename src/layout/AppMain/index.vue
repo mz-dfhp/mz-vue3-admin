@@ -9,14 +9,12 @@
 </template>
 
 <script setup lang="ts" name="AppMain">
+import { storeToRefs } from 'pinia'
 import { keepAliveStore } from '@/store/keepAlive'
 import { settingStore } from '@/store/setting'
-import { computed } from 'vue'
-const keepAliveInstance = keepAliveStore()
-const settingStoreInstance = settingStore()
 
-const keepList = computed(() => keepAliveInstance.getkeepAlive)
-const transitionName = computed(() => settingStoreInstance.getTransitionName)
+const { keepList } = storeToRefs(keepAliveStore())
+const { getTransitionName: transitionName } = storeToRefs(settingStore())
 </script>
 
 <style scoped lang="scss"></style>

@@ -20,7 +20,7 @@
       <el-form-item label="主题色">
         <el-color-picker
           color-format="rgb"
-          v-model="settingState.color"
+          v-model="settingState.themeColor"
           :predefine="predefineColors"
         />
       </el-form-item>
@@ -45,26 +45,18 @@
         </el-select>
       </el-form-item>
     </el-form>
-    <template #footer>
-      <div style="flex: auto">
-        <el-button @click="show = false">取消</el-button>
-        <el-button type="primary" @click="confirmClick">确定</el-button>
-      </div>
-    </template>
   </el-drawer>
 </template>
 
 <script setup lang="ts" name="AppSetting">
-import { useThemeColor, useTransitionName, useTabName } from '@/hooks'
-import { ref, reactive, watch, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useWindowSize } from '@vueuse/core'
+
+import { settingStore } from '@/store/setting'
 
 const { width } = useWindowSize()
 const settingWidth = computed(() => (width.value < 600 ? '80%' : '400px'))
 
-const { themeColor, setThemeColor } = useThemeColor()
-const { transitionName, setTransitionName } = useTransitionName()
-const { tabName, setTabName } = useTabName()
 const show = ref<boolean>(false)
 const showSetting = () => {
   show.value = true
@@ -77,7 +69,8 @@ const predefineColors = [
   '#90ee90',
   '#00ced1',
   '#1e90ff',
-  '#c71585'
+  '#c71585',
+  '#0e0c95'
 ]
 const transitionList = [
   {
@@ -107,22 +100,7 @@ const tabList = [
     title: '灵动'
   }
 ]
-let settingState = reactive({
-  color: themeColor.value,
-  transitionName: transitionName.value,
-  tabName: tabName.value
-})
-
-const confirmClick = () => {
-  settingState.color && setThemeColor(settingState.color)
-  settingState.transitionName && setTransitionName(settingState.transitionName)
-  settingState.tabName && setTabName(settingState.tabName)
-  show.value = false
-}
-watch(show, (e) => {
-  if (!e) return
-  settingState.color = themeColor.value
-})
+const settingState = computed(() => settingStore().settingState)
 </script>
 
 <style lang="scss" scoped></style>

@@ -44,10 +44,10 @@ import { watch, ref, onMounted, computed } from 'vue'
 import { useRouter, useRoute, RouteLocationNormalizedLoaded } from 'vue-router'
 import { RouteItem, tabsStore } from '@/store/tabs'
 import { PageEnum } from '@/enmus'
-import { useTabName, useRefresh } from '@/hooks'
+import { useSettings, useRefresh } from '@/hooks'
 
 const { refresh } = useRefresh()
-const { tabName } = useTabName()
+const { tabName } = useSettings()
 const routerInstance = useRouter()
 const routeInstance = useRoute()
 const tabsStoreInstance = tabsStore()
