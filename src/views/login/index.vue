@@ -63,7 +63,7 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { userStore } from '@/store/modules/user'
+import { userStore } from '@/store/user'
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { loginIn } from '@/api'

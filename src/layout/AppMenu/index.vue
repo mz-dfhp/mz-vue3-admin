@@ -47,7 +47,7 @@
 import { useRoute, useRouter, RouteRecordName } from 'vue-router'
 import AppMenuItem from '../AppMenuItem/index.vue'
 import AppLogo from '../AppLogo/index.vue'
-import { menuStore } from '@/store/modules/menu'
+import { menuStore } from '@/store/menu'
 import { computed, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { IPermission } from '@/interface'

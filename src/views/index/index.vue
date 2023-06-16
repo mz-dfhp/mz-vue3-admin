@@ -62,7 +62,7 @@ import { showOne, showTwo } from './options'
 import { onMounted, reactive, ref, onUnmounted, watch, Ref } from 'vue'
 import { throttle } from 'lodash-es'
 import { EChartsType } from 'echarts/core'
-import { settingStore } from '@/store/modules/setting'
+import { settingStore } from '@/store/setting'
 type TEchars = {
   [propName: string]: EChartsType | null
 }
