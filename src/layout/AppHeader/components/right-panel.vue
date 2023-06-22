@@ -46,7 +46,6 @@
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item command="login-out">退出登录</el-dropdown-item>
-          <el-dropdown-item command="more">暂未添加更多</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>

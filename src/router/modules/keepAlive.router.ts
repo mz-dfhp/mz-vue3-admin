@@ -41,7 +41,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'keep-two-page',
           name: `${routeName}-two-page`,
-          component: () => import('@/views/keep/keep-two-page.vue'),
+          component: () => import('@/views/keep/keep-two/keep-two-page.vue'),
           meta: {
             title: '二级缓存页面',
             keepAlive: true
@@ -58,7 +58,8 @@ const routes: RouteRecordRaw = {
             {
               path: 'keep-three-page',
               name: `${routeName}-three-page`,
-              component: () => import('@/views/keep/keep-three-page.vue'),
+              component: () =>
+                import('@/views/keep/keep-two/keep-three/keep-three-page.vue'),
               meta: {
                 title: '三级缓存页面',
                 keepAlive: true
@@ -75,7 +76,10 @@ const routes: RouteRecordRaw = {
                 {
                   path: 'keep-four-page',
                   name: `${routeName}-four-page`,
-                  component: () => import('@/views/keep/keep-four-page.vue'),
+                  component: () =>
+                    import(
+                      '@/views/keep/keep-two/keep-three/keep-four/keep-four-page.vue'
+                    ),
                   meta: {
                     title: '四级缓存页面',
                     keepAlive: true
