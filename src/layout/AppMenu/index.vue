@@ -1,12 +1,12 @@
 <template>
   <div class="flex h-100% overflow-hidden">
     <div
-      class="w-80px flex flex-col h-100% bg-[var(--el-color-primary-light-3)]"
+      class="w-70px flex flex-col h-100% bg-[var(--el-color-primary-light-3)]"
     >
       <AppLogo :expansion="expansion" />
       <el-scrollbar class="flex-1 p-10px">
         <div
-          class="flex-center flex-col p-y-10px cursor-pointer rounded-4px hover-bg-[var(--el-color-primary-light-5)]"
+          class="flex-center flex-col p-y-10px cursor-pointer rounded-4px hover-bg-[var(--el-color-primary-light-5)] p-2px"
           :class="{
             'bg-main hover-bg-main!': parentActiveMenu === item.name,
             'm-t-5px': index !== 0
@@ -15,8 +15,10 @@
           :key="index"
           @click="onParentActiveMenuChange(item)"
         >
-          <div class="i-bi:grid text-20px bg-white"></div>
-          <div text="center white" m-t-5px break-all>{{ item.title }}</div>
+          <div class="i-bi:grid text-16px bg-white"></div>
+          <div text="center white 15px" m-t-5px break-all>
+            {{ item.title }}
+          </div>
         </div>
       </el-scrollbar>
     </div>
@@ -32,7 +34,7 @@
           <el-menu
             class="common-menu"
             :default-active="(activeMenu as any)"
-            :collapse="props.expansion"
+            :collapse="false"
             unique-opened
           >
             <AppMenuItem :menuList="menuList" />

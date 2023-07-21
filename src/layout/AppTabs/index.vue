@@ -1,5 +1,8 @@
 <template>
-  <div class="flex-between">
+  <div
+    class="flex-between z-1 relative"
+    style="box-shadow: 0 6px 12px 0 rgb(49 108 251 / 5%)"
+  >
     <div class="flex-1 overflow-hidden">
       <el-tabs
         v-model="activeTab"
@@ -176,7 +179,7 @@ const handleCommand = (e: number) => {
     border-bottom: none;
 
     .el-tabs__nav-scroll {
-      padding: 0 20px;
+      padding: 0 25px;
 
       .el-tabs__nav {
         border: none !important;
