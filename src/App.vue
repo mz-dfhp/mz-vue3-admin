@@ -9,15 +9,10 @@ const globalResize = throttle(() => {
   setExpansion(clientWidth < 800)
 }, 500)
 
-function settingApp() {
-  const { dark, setDark } = useSettings()
-  dark.value && setDark(true)
-}
-
 onMounted(() => {
   window.addEventListener('resize', globalResize)
-  settingApp()
 })
+
 onUnmounted(() => {
   window.removeEventListener('resize', globalResize)
 })

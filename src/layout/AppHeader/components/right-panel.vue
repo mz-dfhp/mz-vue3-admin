@@ -24,8 +24,8 @@
         m-l-20px
         hover-scale-120
         transition-all
-        :class="dark ? 'i-bi:moon' : 'i-bi:sun'"
-        @click="setDark(!dark)"
+        :class="isDark ? 'i-bi:moon' : 'i-bi:sun'"
+        @click="toggleDark"
       ></div>
       <div
         cursor-pointer
@@ -59,7 +59,7 @@ import { userStore } from '@/store/user'
 import { useRefresh } from '@/hooks'
 
 const { refresh } = useRefresh()
-const { dark, setDark } = useSettings()
+const { isDark, toggleDark } = useSettings()
 const { isFullscreen, toggle } = useFullscreen()
 
 const userInfo = userStore().getUserInfo

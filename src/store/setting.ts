@@ -4,7 +4,6 @@ import { computed, reactive, watch } from 'vue'
 export interface ISettings {
   expansion: boolean
   themeColor: string
-  dark: boolean
   transitionName: 'fade' | 'slide-fade' | 'zoom' | 'fade-transform'
   tabName: 'card' | 'etherealize'
 }
@@ -18,8 +17,6 @@ export const settingStore = defineStore(
       expansion: false,
       // 主题色
       themeColor: 'rgb(14, 12, 149)',
-      //暗黑模式
-      dark: false,
       // 动画
       transitionName: 'fade-transform',
       // 标签风格
@@ -28,7 +25,6 @@ export const settingStore = defineStore(
 
     const getExpansion = computed(() => settingState.expansion)
     const getThemeColor = computed(() => settingState.themeColor)
-    const getDark = computed(() => settingState.dark)
     const getTransitionName = computed(() => settingState.transitionName)
     const getTabName = computed(() => settingState.tabName)
 
@@ -57,11 +53,6 @@ export const settingStore = defineStore(
       settingState.themeColor = themeColor
     }
 
-    function setDark(dark: boolean) {
-      settingState.dark = dark
-      document.documentElement.classList.toggle('dark')
-    }
-
     function setTransitionName(name: ISettings['transitionName']) {
       settingState.transitionName = name
     }
@@ -84,12 +75,10 @@ export const settingStore = defineStore(
       settingState,
       getExpansion,
       getThemeColor,
-      getDark,
       getTransitionName,
       getTabName,
       setExpansion,
       setThemeColor,
-      setDark,
       setTransitionName,
       setTabName
     }
@@ -100,7 +89,6 @@ export const settingStore = defineStore(
       paths: [
         'settingState.expansion',
         'settingState.themeColor',
-        'settingState.dark',
         'settingState.transitionName',
         'settingState.tabName'
       ]
