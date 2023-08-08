@@ -1,0 +1,1 @@
+import{_ as e,f as r,o as n}from"./index-e4aa9d87.js";const s={},t={name:"iframeName",class:"w-100% h-80vh b-none",src:"https://cn.vuejs.org/guide/quick-start.html"};function a(c,o){return n(),r("iframe",t)}const i=e(s,[["render",a],["__file","/home/runner/work/mz-vue3-admin/mz-vue3-admin/src/views/other/iframe.vue"]]);export{i as default};

@@ -1,1 +1,0 @@
-import{_ as t,c as o,f as c,h as r,w as n,o as s,i as a}from"./index-08297236.js";/* empty css                  */const _={},i={class:""};function u(m,d){const e=o;return s(),c("div",i,[r(e,{type:"primary"},{default:n(()=>[a("vue-ui")]),_:1})])}const p=t(_,[["render",u],["__file","/home/runner/work/mz-vue3-admin/mz-vue3-admin/src/views/project/vue-ui.vue"]]);export{p as default};
