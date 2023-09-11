@@ -46,9 +46,11 @@
 </template>
 <script setup lang="tsx" name="Table">
 import { reactive, ref } from 'vue'
-import ProTable from '@/components/ProTable/index.vue'
-import { ColumnProps } from '@/types'
-const tableRef = ref<typeof ProTable | null>(null)
+import ProTable, {
+  type TProTableRef,
+  type ColumnProps
+} from '@/components/ProTable/index.vue'
+const tableRef = ref<TProTableRef>()
 
 const tableState = reactive({
   list: [

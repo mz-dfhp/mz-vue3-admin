@@ -2,12 +2,13 @@
   <el-table
     v-bind="$attrs"
     ref="tableRef"
-    :data="data"
-    border
-    :row-key="rowKey"
+    :data="props.data"
+    :row-key="props.rowKey"
+    :border="props.border"
     element-loading-text="加载中"
     element-loading-background="rgba(122, 122, 122, 0.8)"
     @selection-change="selectionChange"
+    v-watermark
   >
     <template v-for="item in columns" :key="item">
       <!-- 多选 单选 展开-->
@@ -16,14 +17,20 @@
           v-bind="item"
           :reserve-selection="item.type == 'selection'"
           v-if="item.type == 'selection' || item.type == 'index'"
+          align="center"
         >
         </el-table-column>
         <el-table-column
           v-bind="item"
           v-if="item.type == 'expand'"
-          #default="{ row }"
+          #default="{ row, $index }"
         >
-          <component :is="item.render" :row="row" v-if="item.render" />
+          <component
+            :is="item.render"
+            :row="row"
+            v-if="item.render"
+            :$index="$index"
+          />
           <slot :name="item.type" :row="row" v-else></slot>
         </el-table-column>
       </template>
@@ -52,8 +59,8 @@
 
 <script setup lang="ts" name="ProTable">
 import { useSelection } from '@/hooks'
-import { ColumnProps } from '@/types'
 import TableColumn from './components/TableColumn.vue'
+import { ColumnProps } from '@/components/ProTable/index.vue'
 
 interface Iprops {
   data: any[]
