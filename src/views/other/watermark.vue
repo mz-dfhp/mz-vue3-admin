@@ -22,9 +22,9 @@
 
 <script setup lang="ts" name="watermark">
 import { useWatermark } from '@/hooks'
-import { ref } from 'vue'
+import { Ref, ref } from 'vue'
 
-const targetRef = ref(null)
+const targetRef = ref()
 const bodyRef = ref(document.querySelector('body'))
 const { renderWatermark, removeWatermark } = useWatermark({
   text: 'watermark',
@@ -35,7 +35,7 @@ const {
   removeWatermark: removeWatermarkBody
 } = useWatermark({
   text: 'mz-vue3-admin',
-  targetRef: bodyRef
+  targetRef: bodyRef as Ref<HTMLElement>
 })
 </script>
 
