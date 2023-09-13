@@ -18,18 +18,17 @@ export function useSelection(rowKey = 'id') {
   // 表格ref
   const tableRef = ref<InstanceType<typeof ElTable>>()
   // 是否选择了
-  const isSelected = ref<boolean>(false)
+  const isSelected = computed(() => !!selectedList.value.length)
   // 选择的列表
   const selectedList = ref<any[]>([])
   // 选择的 rowKey
-  const selectedListIds = computed((): string[] => {
+  const selectedListIds = computed(() => {
     const ids: string[] = []
     selectedList.value.forEach((item) => ids.push(item[rowKey]))
     return ids
   })
   // 表格选择
   const selectionChange = (rowArr: any) => {
-    rowArr.length === 0 ? (isSelected.value = false) : (isSelected.value = true)
     selectedList.value = rowArr
   }
   // 清除
