@@ -34,7 +34,7 @@ const {
   renderWatermark: renderWatermarkBody,
   removeWatermark: removeWatermarkBody
 } = useWatermark({
-  text: 'mz-vue3-admin',
+  text: 'Vue3-admin',
   targetRef: bodyRef as Ref<HTMLElement>
 })
 </script>

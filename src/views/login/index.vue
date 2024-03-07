@@ -1,38 +1,60 @@
 <template>
-  <div class="bg-[var(--el-color-primary-light-3)] w100% h100% flex-center">
-    <div class="w80% h80% bg-#ABC1F2 flex rounded-10px overflow-hidden">
-      <div lg-flex-1></div>
-      <div class="bg-#ffffff flex-1 flex">
+  <div
+    className="h100% w100% flex-center p-x-20px box-border"
+    style="
+      background-image: linear-gradient(
+        94deg,
+        #232d3c,
+        #162b5b,
+        #20469c,
+        #2863e3
+      );
+    "
+  >
+    <div
+      className="h-554px w-100% flex overflow-hidden rounded-10px bg-#ffffff lg-w-960px"
+    >
+      <div
+        className="w-0 flex-center overflow-hidden lg-flex-1 lg-overflow-visible"
+      >
+        <img width="382" height="382" :src="LoginSvg" />
+      </div>
+      <div className="flex flex-1 bg-#ffffff">
         <el-form
-          class="m-auto w80%"
+          class="m-auto overflow-hidden rounded-8px bg-#ffffff p-30px w-225px h-270px"
           :model="loginForm"
           ref="FormRef"
           :rules="rules"
-          status-icon
           label-position="top"
+          size="large"
         >
           <el-form-item>
-            <div class="text-8 font-bold p-b-10 text-main">mz-vue3-admin</div>
+            <div
+              className="p-b-20px text-center text-22px text-#5B86E5 font-bold"
+            >
+              Vue3-admin
+            </div>
           </el-form-item>
-          <el-form-item prop="userName" label="账号">
+          <el-form-item prop="userName">
             <el-input
               v-model="loginForm.userName"
-              size="large"
-              placeholder="userName"
+              placeholder="admin"
+              :prefix-icon="UserIcon"
             />
           </el-form-item>
-          <el-form-item prop="passWord" label="密码">
+          <el-form-item prop="passWord">
             <el-input
               v-model="loginForm.passWord"
               type="passWord"
-              size="large"
-              placeholder="passWord"
+              placeholder="123456"
+              :prefix-icon="PassWordIcon"
             />
           </el-form-item>
           <el-form-item>
             <el-button
               type="primary"
-              class="w-100% p-y-20px!"
+              class="w-100%"
+              color="#1677ff"
               :loading="loading"
               @click="submitForm('')"
             >
@@ -43,17 +65,21 @@
             <el-button
               type="primary"
               size="small"
+              color="#1677ff"
               :loading="loading"
               @click="submitForm('admin')"
-              >admin</el-button
             >
+              admin
+            </el-button>
             <el-button
               type="primary"
               size="small"
+              color="#1677ff"
               :loading="loading"
               @click="submitForm('test')"
-              >test</el-button
             >
+              test
+            </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -64,9 +90,26 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { userStore } from '@/store/user'
-import { reactive, ref } from 'vue'
-import type { FormInstance, FormRules } from 'element-plus'
+import { h, reactive, ref } from 'vue'
+import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { loginIn } from '@/api'
+import LoginSvg from '@/assets/svg/login-bg.svg'
+
+const UserIcon = h('div', {
+  className: 'i-bi:person p-x-5px w-20px ',
+  style: {
+    fontSize: '20px',
+    color: '#333333'
+  }
+})
+const PassWordIcon = h('div', {
+  className: 'i-bi:bag-dash p-x-5px ',
+  style: {
+    fontSize: '20px',
+    color: '#333333'
+  }
+})
+
 const rules = reactive<FormRules>({
   userName: [
     {
@@ -86,18 +129,24 @@ const rules = reactive<FormRules>({
 const FormRef = ref<FormInstance>()
 const loading = ref(false)
 const loginForm = reactive({
-  userName: '',
-  passWord: ''
+  userName: 'admin',
+  passWord: '123456'
 })
 const router = useRouter()
 const submitForm = async (role: string) => {
-  role &&
-    ((loginForm.userName = role),
-    (loginForm.passWord = role),
-    (loading.value = true))
+  if (role) {
+    loginForm.userName = role
+    loginForm.passWord = role
+  } else {
+    if (!(loginForm.userName === 'admin' && loginForm.passWord === '123456')) {
+      return ElMessage.error('请输入正确的账号密码')
+    }
+  }
+
   await FormRef?.value?.validate(async (valid: boolean) => {
     if (valid) {
-      const token = await loginIn(role)
+      loading.value = true
+      const token = await loginIn(loginForm.userName)
       await userStore().setToken(token)
       loading.value = false
       router.replace({

@@ -29,7 +29,7 @@
       >
         <div p-x-10px>
           <div class="h-60px flex-center">
-            <div class="flex-shrink-0">mz-vue3-admin</div>
+            <div class="flex-shrink-0">Vue3-admin</div>
           </div>
           <el-menu
             class="common-menu"
