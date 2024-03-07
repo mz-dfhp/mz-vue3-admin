@@ -96,17 +96,19 @@ import { loginIn } from '@/api'
 import LoginSvg from '@/assets/svg/login-bg.svg'
 
 const UserIcon = h('div', {
-  className: 'i-bi:person p-x-5px w-20px ',
+  className: 'i-bi:person',
   style: {
     fontSize: '20px',
-    color: '#333333'
+    color: '#333333',
+    flexShrink: '0'
   }
 })
 const PassWordIcon = h('div', {
-  className: 'i-bi:bag-dash p-x-5px ',
+  className: 'i-bi:bag-dash',
   style: {
     fontSize: '20px',
-    color: '#333333'
+    color: '#333333',
+    flexShrink: '0'
   }
 })
 
