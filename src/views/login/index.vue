@@ -138,11 +138,15 @@ const router = useRouter()
 const submitForm = async (role: string) => {
   if (role) {
     loginForm.userName = role
-    loginForm.passWord = role
-  } else {
-    if (!(loginForm.userName === 'admin' && loginForm.passWord === '123456')) {
-      return ElMessage.error('请输入正确的账号密码')
-    }
+    loginForm.passWord = '123456'
+  }
+  if (
+    !(
+      ['admin', 'test'].includes(loginForm.userName) &&
+      loginForm.passWord === '123456'
+    )
+  ) {
+    return ElMessage.error('请输入正确的账号密码')
   }
 
   await FormRef?.value?.validate(async (valid: boolean) => {
