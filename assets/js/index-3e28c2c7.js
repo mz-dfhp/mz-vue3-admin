@@ -1,1 +1,0 @@
-import{s as a,u as n,t as u,v as p}from"./index-51e5ee33.js";/* empty css                 */const m={setup(){const e=a(),r=n();return u(()=>{const{params:s,query:o}=e,{path:t}=s;debugger;r.replace({path:"/"+(Array.isArray(t)?t.join("/"):t),query:o})}),()=>`<${p}/>`}};export{m as default};

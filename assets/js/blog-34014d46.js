@@ -1,1 +1,0 @@
-import{_ as t,c as o,f as c,j as r,w as n,o as s,k as a}from"./index-51e5ee33.js";/* empty css                  */const _={},i={class:""};function l(m,d){const e=o;return s(),c("div",i,[r(e,{type:"primary"},{default:n(()=>[a("blog")]),_:1})])}const p=t(_,[["render",l],["__file","/home/runner/work/mz-vue3-admin/mz-vue3-admin/src/views/project/blog.vue"]]);export{p as default};
